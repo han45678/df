@@ -1,0 +1,612 @@
+#load,#transitions {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: #fff;
+    z-index: 99999;
+    transition: 0.6s;
+
+    img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &.active {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+#transitions {
+    transition: 0.6s;
+    z-index: 99990;
+
+    &.active {
+        transition: 0.1s;
+    }
+}
+
+@import './base/reset';
+@import './base/lightbox.min';
+@import './base/slick';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import './helpers/variables';
+@import './layout/header';
+@import './layout/header_m';
+@import './layout/footer';
+
+
+
+*,
+a,
+button,
+table {
+    font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+    color: #282828;
+}
+
+
+
+a,
+button {
+    cursor: pointer;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background-color: #fff;
+
+    .oyh {
+        overflow-y: hidden !important;
+    }
+}
+
+button {
+    cursor: pointer;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1199px;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media only screen and (max-width: 1199px) {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+main {
+
+    &.page {
+        margin-top: 100px;
+        @media only screen and (max-width: 1024px){
+            margin-top: 0;
+        }
+    }
+
+    #banner {
+        width: 100%;
+        height: 268px;
+
+        @media only screen and (max-width: 1365px) {
+            height: 300px;
+        }
+
+        @media only screen and (max-width: 1024px) {
+            height: 275px;
+        }
+
+        #banner_pic {
+            margin-left: 33.333333%;
+            height: 420px;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                &.pc{
+                    display: block;
+                    @media only screen and (max-width: 1024px){
+                        display: none;
+                    }
+                }
+                &.m{
+                    display: none;
+                    @media only screen and (max-width: 1024px){
+                        display: block;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: 1365px) {
+                margin-left: 27.5%;
+            }
+
+            @media only screen and (max-width: 1279px) {
+                margin-left: 17.5%;
+            }
+
+            @media only screen and (max-width: 1199px) {
+                margin-left: 10%;
+            }
+
+            @media only screen and (max-width: 1024px) {
+                margin-left: 0;
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        &.big {
+            height: 690px;
+            display: flex;
+            flex-wrap: wrap;
+
+            @media only screen and (max-width: 1024px) {
+                height: auto;
+            }
+
+            #banner_text {
+                width: 33.333333%;
+                box-sizing: border-box;
+                padding-left: 160px;
+                padding-top: 245px;
+
+                @media only screen and (max-width: 1680px) {
+                    padding-left: 80px;
+                }
+
+                @media only screen and (max-width: 1479px) {
+                    padding-left: 40px;
+                }
+
+                @media only screen and (max-width: 1279px) {
+                    padding-left: 20px;
+                }
+
+                @media only screen and (max-width: 1024px) {
+                    width: 100%;
+                    order: 2;
+                    padding: 40px 60px;
+                }
+
+                .text {
+                    box-sizing: border-box;
+                    padding-top: 15px;
+                    padding-left: 80px;
+                    padding-bottom: 135px;
+                    padding-right: 15px;
+                    position: relative;
+
+                    @media only screen and (max-width: 1680px) {
+                        padding-left: 40px;
+                    }
+
+                    @media only screen and (max-width: 1024px) {
+                        padding-left: 0;
+                        padding-bottom: 20px;
+                        padding-top: 0;
+                    }
+
+                    h3 {
+                        font-size: 52px;
+                        font-weight: 400;
+                        line-height: 1.5;
+                        margin-bottom: 15px;
+
+                        @media only screen and (max-width: 1279px) {
+                            font-size: 32px;
+                        }
+                    }
+
+                    p {
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 1.5;
+
+                        @media only screen and (max-width: 1279px) {
+                            font-size: 16px;
+                        }
+                    }
+
+
+
+                    .text_line {
+                        width: 1px;
+                        height: 235px;
+                        background-color: #E1E1E1;
+                        position: absolute;
+                        left: 15px;
+                        top: 0;
+
+                        @media only screen and (max-width: 1024px) {
+                            width: 100%;
+                            height: 1px;
+                            top: 100%;
+                            left: 0;
+                        }
+
+                        &::after {
+                            content: '';
+                            width: 1px;
+                            height: 30%;
+                            background-color: #282828;
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            z-index: 1;
+                            animation: lineAnimation 3s linear infinite;
+
+                            @media only screen and (max-width: 1024px) {
+                                width: 25%;
+                                height: 1px;
+                                top: 100%;
+                                left: 0;
+                                animation: lineAnimation_m 3s linear infinite;
+                            }
+                        }
+                        &._10s{
+                            &::after {
+                                animation: lineAnimation 10s linear infinite;
+                                @media only screen and (max-width: 1024px) {
+                                    animation: lineAnimation_m 10s linear infinite;
+                                }
+                            }
+                        }
+                    }
+
+                    .link {
+                        width: 28px;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        background-color: #fff;
+
+                        @media only screen and (max-width: 1024px) {
+                            display: none;
+                        }
+
+                        a {
+                            margin-top: 15px;
+                            display: block;
+                            width: 28px;
+                            height: 28px;
+                            border: 1px solid #282828;
+                            border-radius: 999px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+
+                    .text_content {
+
+
+                        .item {
+                            h3 {
+                                transform: translateY(-50%);
+                                opacity: 0;
+                                transition: 0.6s;
+                            }
+
+                            p {
+                                transform: translateY(50%);
+                                opacity: 0;
+                                transition: 0.6s;
+                            }
+
+                        }
+
+                        &.slick_an_go{
+                            .slick-active {
+                                .item {
+                                    h3 {
+                                        transform: translateY(0);
+                                        opacity: 1;
+                                    }
+    
+                                    p {
+                                        transform: translateY(0);
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            #banner_pic {
+                margin-left: 0;
+                width: 66.666666%;
+                height: 840px;
+                
+                @media only screen and (max-width: 1024px) {
+                    width: 100%;
+                    height: auto;
+                    order: 1;
+                }
+            }
+        }
+    }
+
+    #banner_title {
+        padding-top: 65px;
+        box-sizing: border-box;
+        padding-left: 240px;
+        padding-right: 240px;
+        padding-bottom: 75px;
+        background-color: $bg_main;
+
+        @media only screen and (max-width: 1365px) {
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+
+        @media only screen and (max-width: 1279px) {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-bottom: 50px;
+            padding-top: 50px;
+        }
+
+        @media only screen and (max-width: 1024px) {
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 35px;
+            padding-top: 35px;
+        }
+
+        h2 {
+            font-size: 46px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #fff;
+
+            @media only screen and (max-width: 1024px) {
+                font-size: 32px;
+            }
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 400;
+            color: #fff;
+
+            span {
+                // color: #445944;
+
+                a {
+                    transition: 0.3s;
+                    color: #fff;
+                    &:hover{
+                        color: #445944;
+                    }
+                }
+            }
+
+            @media only screen and (max-width: 1024px) {
+                font-size: 12px;
+            }
+        }
+    }
+
+    #page_no {
+        margin-top: 50px;
+        margin-bottom: 120px;
+
+        @media only screen and (max-width: 1024px) {
+            margin-top: 15px;
+            margin-bottom: 65px;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            li {
+                a {
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    font-size: 20px;
+                    font-weight: 400;
+                    color: $text_main;
+                    display: inline-block;
+                    border-radius: 999px;
+                    transition: 0.3s;
+
+                    &.active,
+                    &:hover {
+                        background-color: $text_main;
+                        color: #fff;
+
+                        img {
+                            filter: brightness(0) invert(1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    #more {
+        &.mb {
+            margin-bottom: 80px;
+        }
+
+        margin-top: 80px;
+        box-sizing: border-box;
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100%;
+        text-align: center;
+        @media only screen and (max-width: 1024px){
+            margin-top: 50px;
+        }
+
+        a {
+            display: inline-block;
+
+            span {
+                display: block;
+                font-size: 30px;
+                font-weight: 600;
+                color: $text_content;
+            }
+
+            img {
+                margin-top: 15px;
+                transition: 0.3s;
+            }
+
+            &:hover {
+                img {
+                    transform: translateX(30%)
+                }
+            }
+        }
+    }
+
+    @import './pages/home';
+    @import './pages/company_serve';
+    @import './pages/news';
+    @import './pages/locations';
+    @import './pages/about';
+}
+
+.slick-track {
+    transition-delay: 3s;
+    transition: fade 2000ms ease-out;
+}
+
+.slick-list {
+    width: 100%;
+}
+
+.lb-dataContainer {
+    display: block;
+    width: 248px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: calc(100% + 5px);
+}
+
+img {
+    max-width: 100%;
+}
+
+
+
+@import './base/animation';
+
+
+#ball {
+    transition: 1.5s;
+    width: 85px;
+    height: 85px;
+    text-align: center;
+    line-height: 85px;
+    color: #fff;
+    font-weight: 600;
+    background-color: $bg_main;
+    border-radius: 999px;
+    opacity: 0.75;
+    position: absolute;
+    pointer-events: none;
+}
+
+/* 燈箱的樣式 */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+
+    /* 添加淡入淡出效果 */
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    #lightbox_wrapper {
+        display: block;
+        margin: auto;
+        max-width: 80%;
+        max-height: 80%;
+        margin-top: 85px;
+
+        img {
+            display: block;
+            margin: auto;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* 關閉按鈕的樣式 */
+        #closeBtn {
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            @media only screen and (max-width: 1024px) {
+                left: 0;
+                right: 0;
+                margin: auto;
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                width: 50px;
+                height: 3px;
+                background-color: #fff;
+                transform: rotate(45deg);
+                left: 0;
+                top: 22.5px;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                width: 50px;
+                height: 3px;
+                background-color: #fff;
+                transform: rotate(-45deg);
+                left: 0;
+                top: 22.5px;
+            }
+        }
+    }
+}

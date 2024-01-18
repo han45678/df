@@ -1,0 +1,186 @@
+.an,
+.anw,
+.anp {
+    transition: 0.6s;
+}
+
+.fi {
+    transform: scale(0.7);
+    opacity: 0;
+
+    &.an_go {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.fd {
+    transform: translateY(-30%);
+    opacity: 0;
+
+    &.an_go {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fu {
+    transform: translateY(30%);
+    opacity: 0;
+
+    &.an_go {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.fl {
+    transform: translateX(30%);
+    opacity: 0;
+
+    &.an_go {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.fr {
+    transform: translateX(-30%);
+    opacity: 0;
+
+    &.an_go {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.d05 {
+    transition-delay: 0.5s;
+}
+
+.d1 {
+    transition-delay: 1s;
+}
+
+.d15 {
+    transition-delay: 1.5s;
+}
+
+.d2 {
+    transition-delay: 2s;
+}
+
+.d25 {
+    transition-delay: 2.5s;
+}
+
+.d3 {
+    transition-delay: 3s;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes rotation_ring {
+    from {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    to {
+        transform: translateX(-50%) rotate(359deg);
+    }
+}
+
+@keyframes reverse_rotation {
+    from {
+        transform: translateY(-50%) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(-50%) rotate(-359deg);
+    }
+}
+
+
+@keyframes bg_zoom {
+    0% {
+        transform: scale(1.3);
+        // background-size: 130%;
+
+    }
+
+    50% {
+        transform: scale(1);
+        // background-size: 100%;
+    }
+
+    100% {
+        transform: scale(1.3);
+        // background-size: 130%;
+    }
+
+}
+
+
+//enter進入時的動作
+//leave離開時的動作
+.fade-enter-active,
+.fade-leave-active {
+    transition: 0.6s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+    opacity: 1;
+}
+
+//enter進入時的動作
+//leave離開時的動作
+.fadeUp-enter-active,
+.fadeUp-leave-active {
+    transition: 1s;
+}
+
+.fadeUp-enter-from,
+.fadeUp-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.fadeUp-enter-to,
+.fadeUp-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+@keyframes lineAnimation {
+    0% {
+        height: 0%;
+    }
+    100% {
+        height: 100%;
+    }
+}
+
+@keyframes lineAnimation_m {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
