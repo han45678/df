@@ -29,26 +29,12 @@ const type_info = ref([
         pic: "type_pic01.jpg",
         item_project: "包裝食品｜食品原料｜生食熟食｜食品下腳料",
       },
-      {
-        cn_name: "食品報廢",
-        en_name: "Food Waste",
-        text: "大豐環保具備甲級清運執照及各式國際認證，提供食品及相關產業客製化報廢和清運服務，如：包裝破袋、清運儲具、多樣清運車種、進行破壞標記、提供銷毀報告等，並配合再利用處理廠，讓報廢非浪費、資源全循環，大豐環保與企業一同守護民生食品安全。",
-        pic: "type_pic01.jpg",
-        item_project: "包裝食品｜食品原料｜生食熟食｜食品下腳料",
-      },
     ],
   },
   {
     name: "機台報廢",
     pic: "type_icon02.svg",
     content: [
-      {
-        cn_name: "機台報廢",
-        en_name: "FMachine Scrapping",
-        text: "針對報廢之工業設備、機台等提供完整的SOP流程，依照客戶需求配合使用之車輛、人力、機具等，從現場清運、報廢銷毀，再到後端合法處理廠，使機台報廢更迅速、安全，達成資源循環再利用。",
-        pic: "type_pic02.jpg",
-        item_project: "中古機台｜二手機台｜老舊、故障之工業設備",
-      },
       {
         cn_name: "機台報廢",
         en_name: "FMachine Scrapping",
@@ -70,27 +56,12 @@ const type_info = ref([
         item_project:
           "周邊商品｜不良品｜3C設備｜生活用品｜家用產品｜商品零組件",
       },
-      {
-        cn_name: "商品報廢",
-        en_name: "Scrapping",
-        text: "商品報廢之意義，大豐環保和您一樣重視。謹慎杜絕報廢商品再度流通回市面，除利用噴漆破壞標記，更可視商品特性進行物理破壞；若涉及商標授權之報廢商品，大豐環保也提供移除商標之服務，確保商業安全與市場公平性。",
-        pic: "type_pic03.jpg",
-        item_project:
-          "周邊商品｜不良品｜3C設備｜生活用品｜家用產品｜商品零組件",
-      },
     ],
   },
   {
     name: "保稅品報廢",
     pic: "type_icon04.svg",
     content: [
-      {
-        cn_name: "保稅品報廢",
-        en_name: "Bonded Scrapping",
-        text: "舉凡需過海關之商品、食品及原物料等，大豐環保可配合至指定場域進行報廢。從估價→稅務諮詢→海關檢驗→人工分選→集中作業→上下車處理→處理廠銷毀，以專業嚴謹的流程，及電子業、傳產等豐富的合作經驗，使海關報廢更安全、高品質、有效率。",
-        pic: "type_pic04.jpg",
-        item_project: "任何需過海關之商品｜食品｜原物料",
-      },
       {
         cn_name: "保稅品報廢",
         en_name: "Bonded Scrapping",
@@ -112,43 +83,50 @@ const type_info = ref([
         item_project:
           " IC晶片｜PCB｜半成品｜庫存IC｜電腦零組件｜電子庫存呆料｜主被動元件",
       },
-      {
-        cn_name: "IC報廢",
-        en_name: "IC Scrapping",
-        text: "針對需報廢各式IC品項，大豐環保提供縝密報廢流程，從清點、分選、粉碎，再進到合法處理廠，確保IC報廢品項完全粉碎且無法回歸製程，保障科技廠製程技術安全。",
-        pic: "type_pic05.jpg",
-        item_project:
-          " IC晶片｜PCB｜半成品｜庫存IC｜電腦零組件｜電子庫存呆料｜主被動元件",
-      },
     ],
   },
 ]);
 
-const slick = () => {
-  $("#type_content .type_content_item_wrapper").slick();
+// const slick = () => {
+//   $("#type_content .type_content_item_wrapper").slick();
+// };
+
+const next_btn = () => {
+  if (type.value == 0) {
+    type.value = type_info.value.length - 1;
+  } else {
+    type.value--;
+  }
+};
+
+const prev_btn = () => {
+  if (type.value == type_info.value.length - 1) {
+    type.value = 0;
+  } else {
+    type.value++;
+  }
 };
 
 onMounted(() => {
-  
   const scrollingHandler = () => {
-        let wh = window.innerHeight || document.documentElement.clientHeight;
-        let ws = window.pageYOffset || document.documentElement.scrollTop;
-        let m = wh / 2 + ws;
+    let wh = window.innerHeight || document.documentElement.clientHeight;
+    let ws = window.pageYOffset || document.documentElement.scrollTop;
+    let m = wh / 2 + ws;
 
-        // Replace '#process_line' with the actual ID or class of your element
-        let processLineElement = document.getElementById('process_line');
-        
-        if (processLineElement && processLineElement.offsetTop < m + wh / 4) {
-          animateItems();
-          setInterval(()=>{
-            animateItems();
-          },30000);
-            document.removeEventListener('scroll', scrollingHandler);
-        }
-    };
+    // Replace '#process_line' with the actual ID or class of your element
+    let processLineElement = document.getElementById("process_line");
 
-    document.addEventListener('scroll', scrollingHandler);
-  slick();
+    if (processLineElement && processLineElement.offsetTop < m + wh / 4) {
+      animateItems();
+      // setInterval(()=>{
+      //   animateItems();
+      // },30000);
+      document.removeEventListener("scroll", scrollingHandler);
+    }
+  };
+
+  document.addEventListener("scroll", scrollingHandler);
+  // slick();
 });
 </script>
 <template>
@@ -173,13 +151,22 @@ onMounted(() => {
 
       <div id="banner_title">
         <h2 class="an fd">報廢服務</h2>
-        <h3 class="an fd">企業服務 / 企業清運服務</h3>
+        <h3 class="an fd">
+          <span>
+            <router-link to="/">企業服務</router-link>
+          </span>
+          / 企業清運服務
+        </h3>
       </div>
 
       <div id="serve_introduce">
         <div id="serve_introduce_content">
           <div class="pic an fu">
-            <img loading="lazy" src="@/assets/images/company_serve/scrap/pic.jpg" alt="pic" />
+            <img
+              loading="lazy"
+              src="@/assets/images/company_serve/scrap/pic.jpg"
+              alt="pic"
+            />
           </div>
           <div class="text an fl">
             <h3>多樣報廢服務</h3>
@@ -257,6 +244,8 @@ onMounted(() => {
               :key="index"
             >
               <div class="type_content_item_wrapper">
+                <button class="arrow_btn prev_btn" @click="prev_btn" />
+                <button class="arrow_btn next_btn" @click="next_btn" />
                 <div
                   class="type_content_item_wrapper_item"
                   v-for="(items, index) in item.content"
@@ -432,7 +421,11 @@ onMounted(() => {
           <div id="contact_content">
             <div class="item an fu">
               <div class="icon">
-                <img loading="lazy" src="@/assets/images/company_serve/tel.svg" alt="tel" />
+                <img
+                  loading="lazy"
+                  src="@/assets/images/company_serve/tel.svg"
+                  alt="tel"
+                />
               </div>
               <div class="text">
                 <h5>客服電話</h5>
@@ -442,22 +435,36 @@ onMounted(() => {
             </div>
             <div class="item green an fu">
               <div class="icon">
-                <img loading="lazy" src="@/assets/images/company_serve/line.svg" alt="tel" />
+                <img
+                  loading="lazy"
+                  src="@/assets/images/company_serve/line.svg"
+                  alt="tel"
+                />
               </div>
               <div class="text">
                 <h5>LINE</h5>
                 <p>透過line@線上客服</p>
-                <a href="https://www.zerozero-tw.com/line_open/?df-zopim" target="_blank">加入好友 @df717</a>
+                <a
+                  href="https://www.zerozero-tw.com/line_open/?df-zopim"
+                  target="_blank"
+                  >加入好友 @df717</a
+                >
               </div>
             </div>
             <div class="item black an fu">
               <div class="icon">
-                <img loading="lazy" src="@/assets/images/company_serve/email.svg" alt="tel" />
+                <img
+                  loading="lazy"
+                  src="@/assets/images/company_serve/email.svg"
+                  alt="tel"
+                />
               </div>
               <div class="text">
                 <h5>E-Mail</h5>
                 <p>聯絡我們</p>
-                <a href="mailto:df.waste@df-recycle.com">df.waste@df-recycle.com</a>
+                <a href="mailto:df.waste@df-recycle.com"
+                  >df.waste@df-recycle.com</a
+                >
               </div>
             </div>
           </div>

@@ -398,6 +398,12 @@ main {
                     &:hover{
                         color: #445944;
                     }
+                    &.color{
+                        color: #445944;
+                        &:hover{
+                            color: #fff;
+                        }
+                    }
                 }
             }
 
@@ -441,6 +447,26 @@ main {
 
                         img {
                             filter: brightness(0) invert(1);
+                        }
+                    }
+                }
+                &.hide{
+                    a {
+                        color: #ccc;
+                        cursor: no-drop;
+                        img{
+                            filter: brightness(0);
+                                opacity: 0.3;
+                        }
+                        &.active,
+                        &:hover {
+                            background-color: transparent;
+                            color: #ccc;
+    
+                            img {
+                                filter: brightness(0);
+                                opacity: 0.3;
+                            }
                         }
                     }
                 }
@@ -566,7 +592,7 @@ img {
             display: block;
             margin: auto;
             max-width: 100%;
-            max-height: 100%;
+            max-height: 80vh;
         }
 
         /* 關閉按鈕的樣式 */
@@ -609,4 +635,9 @@ img {
             }
         }
     }
+}
+
+.lazy_img_pic{
+    width: 122px;
+    height: 122px;
 }

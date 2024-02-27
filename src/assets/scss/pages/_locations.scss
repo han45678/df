@@ -122,7 +122,7 @@
                             box-sizing: border-box;
                             background-color: $text_main;
                             font-size: 18px;
-                            font-weight: 600;
+                            font-weight: 400;
                             border: none;
                             color: #fff;
                             @media only screen and (max-width: 1024px){
@@ -138,7 +138,7 @@
                             padding: 0 15px;
                             color: $text_main;
                             font-size: 18px;
-                            font-weight: 600;
+                            font-weight: 400;
                             background-color: #fff;
                             border: none;
                             @media only screen and (max-width: 1024px){
@@ -153,7 +153,7 @@
                             &::placeholder {
                                 color: $text_main;
                                 font-size: 18px;
-                                font-weight: 600;
+                                font-weight: 400;
                             }
                         }
                     // }
@@ -226,7 +226,7 @@
                             .name {
                                 color: #fff;
                                 font-size: 18px;
-                                font-weight: 600;
+                                font-weight: 400;
                                 line-height: 1.5;
                                 padding-left: 15px;
                                 transition: 0.3s;
@@ -251,9 +251,15 @@
                                 p {
                                     color: #fff;
                                     font-size: 18px;
-                                    font-weight: 600;
+                                    font-weight: 400;
                                     line-height: 1.5;
                                     transition: 0.3s;
+                                    br{
+                                        display: none;
+                                        @media only screen and (max-width: 1024px){
+                                            display: block;
+                                        }
+                                    }
                                 }
                             }
 

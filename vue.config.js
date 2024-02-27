@@ -1,7 +1,7 @@
 // const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  transpileDependencies: true,
+  // transpileDependencies: true,
   assetsDir: "assets",
   lintOnSave: false,
   publicPath: "/demo/df_vue",

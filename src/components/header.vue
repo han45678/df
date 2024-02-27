@@ -3,7 +3,7 @@ import header_pc from "@/components/header_pc.vue";
 import header_m from "@/components/header_m.vue";
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
-const props = defineProps(["logo_color", "fixed"]);
+const props = defineProps(["logo_color", "fixed","scroll"]);
 const isMobile = ref(false);
 
 const checkWindowSize = () => {
@@ -26,7 +26,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div id="header">
-    <header_pc v-if="!isMobile" :logo_color="props.logo_color" :fixed="props.fixed" />
+    <header_pc v-if="!isMobile" :logo_color="props.logo_color" :fixed="props.fixed" :scroll="props.scroll" />
     <header_m v-if="isMobile" />
     <div v-if="isMobile" style=" width: 100%;height: 60px;" />
   </div>

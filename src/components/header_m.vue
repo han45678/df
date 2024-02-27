@@ -62,7 +62,7 @@ onMounted(() => {});
           </router-link>
         </li>
         <li>
-          <router-link :class="{ current: path == 'news' }" to="/news">
+          <router-link :class="{ current: path == 'news' }" to="/news/0">
             最新消息
           </router-link>
         </li>
@@ -130,7 +130,9 @@ onMounted(() => {});
             +
           </button>
         </div>
-        <div class="item"><a href="javascript:void(0)">再生塑膠材料</a></div>
+        <div class="item">
+          <router-link to="./pcr-materials">再生塑膠材料</router-link>
+        </div>
         <div class="item"><a href="javascript:void(0)">再生循環產品</a></div>
         <div class="item"><a href="javascript:void(0)">工程顧問服務</a></div>
       </div>
@@ -166,6 +168,22 @@ onMounted(() => {});
         <div class="item">
           <router-link :class="{ current: path == 'wood' }" to="./wood"
             >廢木材清運</router-link
+          >
+        </div>
+
+        <div class="item">
+          <router-link to="./"
+            >廢棄物減量</router-link
+          >
+        </div>
+        <div class="item">
+          <router-link to="./"
+            >廢棄物棄置案</router-link
+          >
+        </div>
+        <div class="item">
+          <router-link to="./"
+            >生活垃圾清運</router-link
           >
         </div>
       </div>

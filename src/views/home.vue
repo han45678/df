@@ -2,6 +2,9 @@
 import vheader from "@/components/header.vue";
 import vfooter from "@/components/footer.vue";
 import { ref, onMounted } from "vue";
+import $ from "jquery";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick.js';
 import axios from "axios";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
@@ -9,11 +12,21 @@ import { useStore } from "vuex";
 const router = useRouter();
 const store = useStore();
 
+function slick() {
+  $("#home_news").slick({
+    dots: false,
+    infinite: true,
+    // fade: true,
+    arrows: false,
+    autoplay:true,
+    speed: 1000, // 切換動畫速度（毫秒）
+  });
+}
 const corporate = ref([
   {
     title:"再生塑膠材料",
     pic:"corporate_pic01.jpg",
-    link:""
+    link:"./pcr-materials"
   },
   {
     title:"永續循環服務",
@@ -28,12 +41,12 @@ const corporate = ref([
   {
     title:"機密文件銷毀",
     pic:"corporate_pic04.jpg",
-    link:""
+    link:"/docdestroy"
   },
   {
     title:"硬碟銷毀",
     pic:"corporate_pic05.jpg",
-    link:""
+    link:"/docdestroy"
   },
   {
     title:"食品報廢",
@@ -53,7 +66,7 @@ const corporate = ref([
   {
     title:"廢木材清運",
     pic:"corporate_pic09.jpg",
-    link:""
+    link:"./wood"
   },
   {
     title:"廢棄物清運",
@@ -67,7 +80,9 @@ const corporate = ref([
   }
 ])
 
-onMounted(() => {});
+onMounted(() => {
+  slick();
+});
 </script>
 <template>
   <div>
@@ -75,6 +90,22 @@ onMounted(() => {});
     <main id="home">
       <div id="home_banner">
         <img loading="lazy" src="@/assets/images/home/banner01.jpg" alt="banner" />
+      </div>
+      <div id="home_news">
+        <div class="item">
+          <h3>News</h3>
+          <div class="text">
+            <p>2023-06-14</p>
+            <p>大豐環保響應MUJI無印良品「Re／FUTURE」</p>
+          </div>
+        </div>
+        <div class="item">
+          <h3>News</h3>
+          <div class="text">
+            <p>2023-06-14</p>
+            <p>大豐環保響應MUJI無印良品「Re／FUTURE」</p>
+          </div>
+        </div>
       </div>
       <div id="corporate">
         <div class="wrapper">
@@ -93,12 +124,12 @@ onMounted(() => {});
                   alt="pic"
                 />
                 <div class="text">
-                  <a href="">
+                  <router-link :to="item.link">
                     <h3>
                       {{ item.title }}
                       <span class="icon"></span>
                     </h3>
-                  </a>
+                  </router-link>
                 </div>
               </div>
             </div>

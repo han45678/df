@@ -5,7 +5,7 @@ import store from "./store";
 import $ from "jquery";
 import Cotton from 'cottonjs';
 
-console.log(Cotton);
+// console.log(Cotton);
 // or using DOM element
 const cursor = document.querySelector('#cotton-cursor');
 const cottonCursor = new Cotton(cursor);
@@ -27,12 +27,20 @@ function handleScroll() {
     });
 
     // Remove 'lazy_img' class from images already loaded
-    $(".lazy_img").each(function () {
-        console.log("重載圖片");
-        if ($(this).offset().top < m + wh / 4) {
-            $(this).attr('src', $(this).data('src')).removeClass('lazy_img');
-        }
+    $(".lazy_img").each(function (index) {
+        
+        var $img = $(this);
+    
+        // 延迟执行，每个元素相隔一秒
+        setTimeout(function () {
+            if ($img.offset().top < m + wh / 4) {
+                // 更新为使用background-image样式
+                console.log("重載圖片");
+                $img.css('background-image', 'url(' + $img.data('src') + ')');
+            }
+        }, index * 1000); // index乘以1000毫秒，即一秒
     });
+    
 }
 
 // Execute once when the page is loaded

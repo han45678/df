@@ -9,14 +9,14 @@ import "slick-carousel/slick/slick.js";
 const lightbox = ref(false);
 const lightbox_pic = ref(null);
 
-function open_pic1(s) {
+function open_pic1(data) {
   lightbox.value = true;
-  lightbox_pic.value = hdpe_info.value[s].big_pic;
+  lightbox_pic.value = data
 }
 
-function open_pic2(s) {
+function open_pic2(data) {
   lightbox.value = true;
-  lightbox_pic.value = hdpe_info2.value[s].big_pic;
+  lightbox_pic.value = data;
 }
 
 const laboratory = ref(0);
@@ -49,62 +49,70 @@ const laboratory_info = ref([
   },
   {
     title: "XRF",
-    text: "依據ASTM D638與ASTM D790進行材料之拉伸與抗折測試，可獲得拉伸強度、延伸率、抗折強度、彎曲模數等機械強度資訊，用來評估材料之應用範圍。",
+    text: "可進行材料之重金屬種類與含量分析，參考RoHS規範針對各批次再生粒成品進行重金屬的管控。",
     pic: "p6.jpg",
   },
   {
     title: "色差儀",
-    text: "依據ASTM D638與ASTM D790進行材料之拉伸與抗折測試，可獲得拉伸強度、延伸率、抗折強度、彎曲模數等機械強度資訊，用來評估材料之應用範圍。",
+    text: "可進行材料之L, a, b與色差值量測，除了用來監控回收材料各批次之顏色穩定性，更可作為後端客戶染色時配色的參考依據。",
     pic: "p7.jpg",
   },
   {
     title: "2.5D影像量測儀",
-    text: "依據ASTM D638與ASTM D790進行材料之拉伸與抗折測試，可獲得拉伸強度、延伸率、抗折強度、彎曲模數等機械強度資訊，用來評估材料之應用範圍。",
+    text: "2.5D顯微投影量測設備，除了可觀察不良成品中雜質的外觀與型態，亦可作為細微尺寸量測的工具。",
     pic: "p8.jpg",
   },
 ]);
+
+const laboratory_switch=()=>{
+  if(laboratory.value==laboratory_info.value.length-1){
+    laboratory.value = 0;
+  }else{
+    laboratory.value ++;
+  }
+}
 
 const hdpe_info = ref([
   {
     code: "N601",
     name: "淺灰色 Light Grey",
     pic: "hdpe_pic01.png",
-    big_pic: "http://placehold.jp/800x800.jpg",
+    big_pic: "N601.jpg",
   },
   {
     code: "N601H",
     name: "淺灰色 Light Grey",
     pic: "hdpe_pic02.png",
-    big_pic: "http://placehold.jp/800x800.png",
+    big_pic: "N601H.jpg",
   },
   {
-    code: "N601",
+    code: "N610",
     name: "乳白微黃色 Milky White",
     pic: "hdpe_pic03.png",
-    big_pic: "http://placehold.jp/800x800.png",
+    big_pic: "N610.jpg",
   },
   {
     code: "N610H",
-    name: "image.png",
+    name: "乳白微黃色 Milky White",
     pic: "hdpe_pic04.png",
-    big_pic: "http://placehold.jp/800x800.png",
+    big_pic: "N610H.jpg",
   },
   {
     code: "N612H",
     name: "乳白微黃色 Milky White",
     pic: "hdpe_pic05.png",
-    big_pic: "http://placehold.jp/800x800.png",
+    big_pic: "N612H.jpg",
   },
   {
     code: "N610HF",
     name: "乳白微黃色 Milky White",
     pic: "hdpe_pic06.png",
-    big_pic: "http://placehold.jp/800x800.png",
+    big_pic: "N610HF.jpg",
     isFoodGrade: true,
   },
   {
     pic: "hdpe_big_pic01.jpg",
-    big_pic: "http://placehold.jp/800x800.jpg",
+    big_pic: "hdpe_big_pic01.jpg",
     isBig: true,
   },
 ]);
@@ -114,36 +122,36 @@ const hdpe_info2 = ref([
     code: "P601",
     name: "淡草綠色 Light Green",
     pic: "hdpe_pic07.png",
-    big_pic: "http://placehold.jp/800x800.png",
+    big_pic: "P601.jpg",
   },
   {
     code: "P601H",
     name: "淡草綠色 Light Green",
     pic: "hdpe_pic08.png",
-    big_pic: "http://placehold.jp/800x800.png",
+    big_pic: "P601H.jpg",
   },
   {
     code: "P611",
     name: "乳白微綠色 WHITE W/ LIGHT GREEN",
     pic: "hdpe_pic09.png",
-    big_pic: "http://placehold.jp/800x800.png",
+    big_pic: "P611.jpg",
   },
   {
     code: "P611H",
     name: "乳白微綠色 WHITE W/ LIGHT GREEN",
     pic: "hdpe_pic10.png",
-    big_pic: "http://placehold.jp/800x800.png",
+    big_pic: "P611H.jpg",
   },
   {
     pic: "hdpe_big_pic02.jpg",
-    big_pic: "http://placehold.jp/800x800.jpg",
+    big_pic: "P614H.jpg",
     isBig: true,
   },
   {
     code: "P614H",
     name: "乳白微綠色 WHITE W/ LIGHT GREEN",
     pic: "hdpe_pic11.png",
-    big_pic: "http://placehold.jp/800x800.png",
+    big_pic: "P611HF.jpg",
   },
   {
     code: "P611HF",
@@ -169,7 +177,7 @@ function slick() {
         settings: {
           // arrows: false,
           speed: 600, 
-          slidesToShow: 3,
+          slidesToShow: 2,
         },
       },
     ],
@@ -242,20 +250,22 @@ onMounted(() => {
         </div>
         <div id="banner_pic">
           <img
-            src="@/assets/images/company_serve/pcr/banner.jpg"
+            src="@/assets/images/company_serve/pcr/banner01.jpg"
             alt="banner"
           />
           <img
-            src="@/assets/images/company_serve/pcr/banner.jpg"
+            src="@/assets/images/company_serve/pcr/banner02.jpg"
             alt="banner"
           />
         </div>
       </div>
       <div id="banner_title">
-        <h2 class="an fd">企業清運服務</h2>
+        <h2 class="an fd">再生塑料</h2>
         <h3 class="an fd">
-          <span><router-link to="/">大豐環保</router-link></span>
-          /關於大豐
+          <span>
+            <router-link class="color" to="/">大豐環保</router-link>
+          </span>
+          / 企業服務
         </h3>
       </div>
       <div id="introduce">
@@ -267,7 +277,7 @@ onMounted(() => {
               alt="pic"
             />
           </div>
-          <div class="text an fu">
+          <div class="text an fr">
             <h3>PCR再生料品牌</h3>
             <p>
               大豐環保於2005年成立第一座塑膠容器再生處理廠，多年來在再生處理技術上不斷的升級，結合配方技術與加工經驗，如今已成為國內溯源認證最完備、品質最穩定、附加價值最高的PCR再生料品牌。
@@ -276,7 +286,7 @@ onMounted(() => {
               除此之外企業亦十分重視全球暖化、淨零碳排等環保議題，除了持續優化製程減少能資源的消耗外，更將處理過程中產生的雜料餘料再製成物流載具，藉此實現零廢棄、全循環的目標。
             </p>
             <p>
-              <a href="">
+              <a href="javascript:void(0)">
                 <img
                   src="@/assets/images/company_serve/pcr/introduce_link_icon.svg"
                   alt="pic"
@@ -297,12 +307,16 @@ onMounted(() => {
           <div class="item an fu">
             <div class="no">01</div>
             <div class="icon">
-              <img
+              <div 
+                class="lazy_img_pic lazy_img" 
+                :data-src="require(`@/assets/images/icon/enterprise_12.svg`)"
+              />
+              <!-- <img
                   class="lazy_img"
                   :data-src="require(`@/assets/images/icon/enterprise_12.svg`)"
                   :src="require(`@/assets/images/icon/enterprise_12.svg`)"
                   alt="icon"
-                />
+                /> -->
             </div>
             <div class="text">
               <h4>完整溯源認證</h4>
@@ -317,12 +331,16 @@ onMounted(() => {
           <div class="item an fu">
             <div class="no">02</div>
             <div class="icon">
-              <img
+              <div 
+                class="lazy_img_pic lazy_img" 
+                :data-src="require(`@/assets/images/icon/enterprise_9.svg`)"
+              />
+              <!-- <img
                   class="lazy_img"
                   :data-src="require(`@/assets/images/icon/enterprise_9.svg`)"
                   :src="require(`@/assets/images/icon/enterprise_9.svg`)"
                   alt="icon"
-                />
+                /> -->
             </div>
             <div class="text">
               <h4>低碳排</h4>
@@ -336,12 +354,16 @@ onMounted(() => {
           <div class="item an fu">
             <div class="no">03</div>
             <div class="icon">
-              <img
+              <div 
+                class="lazy_img_pic lazy_img" 
+                :data-src="require(`@/assets/images/icon/enterprise_10.svg`)"
+              />
+              <!-- <img
                   class="lazy_img"
                   :data-src="require(`@/assets/images/icon/enterprise_10.svg`)"
                   :src="require(`@/assets/images/icon/enterprise_10.svg`)"
                   alt="icon"
-                />
+                /> -->
             </div>
             <div class="text">
               <h4 class="color_main">高品質</h4>
@@ -356,12 +378,16 @@ onMounted(() => {
           <div class="item an fu">
             <div class="no">04</div>
             <div class="icon">
-              <img
+              <div 
+                class="lazy_img_pic lazy_img" 
+                :data-src="require(`@/assets/images/icon/enterprise_11.svg`)"
+              />
+              <!-- <img
                   class="lazy_img"
                   :data-src="require(`@/assets/images/icon/enterprise_11.svg`)"
                   :src="require(`@/assets/images/icon/enterprise_11.svg`)"
                   alt="icon"
-                />
+                /> -->
             </div>
             <div class="text">
               <h4>安全無虞</h4>
@@ -382,7 +408,8 @@ onMounted(() => {
       <div id="territory">
         <h3>TERRITORY</h3>
         <div class="map">
-          <img loading="lazy" src="@/assets/images/company_serve/pcr/map.jpg" alt="map" />
+          <img loading="lazy" class="m" src="@/assets/images/company_serve/pcr/map_m.jpg" alt="map" />
+          <img loading="lazy" class="pc" src="@/assets/images/company_serve/pcr/map.jpg" alt="map" />
         </div>
         <!-- <div class="vidoe">
           <div class="vidoe_content">
@@ -4173,7 +4200,7 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
                 <p>
                   {{ item.text }}
                 </p>
-                <a href="">
+                <a @click="laboratory_switch" href="javascript:void(0)">
                   <img
                     src="@/assets/images/company_serve/pcr/detail_arrow.svg"
                     alt="arrow"
@@ -4216,7 +4243,7 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
               :class="{ big: item.isBig }"
             >
               <div class="pic">
-                <a href="javascript:void(0)" @click="open_pic1(index)">
+                <a href="javascript:void(0)" @click="open_pic1(require(`@/assets/images/company_serve/pcr/${item.big_pic}`))">
                   <img
                     class="example-image"
                     :src="
@@ -4244,7 +4271,7 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
               />
             </h3>
             <p>
-              可應用於個人用品類、化粧品包材、瓶蓋、吹瓶、編織袋 Product applications could be personal-care products, cosmetic packaging, lids, bottles, woofer bags and so on.
+              可應用於個人用品類、化粧品包材、瓶蓋、吹瓶、編織袋 <br/>Product applications could be personal-care products, cosmetic packaging, lids, bottles, woofer bags and so on.
             </p>
           </div>
           <div class="content">
@@ -4252,10 +4279,10 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
               v-for="(item, index) in hdpe_info2"
               :key="index"
               class="item"
-              :class="{ big: item.isBig }"
+              :class="{ big:item.isBig , big_m_hide: item.isBig }"
             >
               <div class="pic">
-                <a href="javascript:void(0)" @click="open_pic2(index)">
+                <a href="javascript:void(0)" @click="open_pic2(require(`@/assets/images/company_serve/pcr/${item.big_pic}`))">
                   <img
                     class="example-image"
                     :src="
@@ -4492,9 +4519,11 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
                 src="@/assets/images/company_serve/pcr/meil.svg"
                 alt="icon"
               />
-              <span
-                >請將您的需求寄信至service@df-recycle.com，將由專人為您回覆</span
-              >
+              <span class="text_content">
+                <span>請將您的需求寄信至</span>
+                <span>service@df-recycle.com<span class="m_hide">，</span></span>
+                <span>將由專人為您回覆</span>
+              </span>
               <p>Welcome to collaborate with us</p>
             </a>
           </div>

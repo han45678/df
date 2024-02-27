@@ -3,7 +3,9 @@ export function animateItem(item, callback) {
   let n = Number(
     item.querySelector(".process_bg").getAttribute("data-percent")
   );
+
   let p = 0;
+
   let pp = setInterval(() => {
     p++;
     item.querySelector(".process_bg").style.setProperty("--percent", p);
@@ -16,21 +18,27 @@ export function animateItem(item, callback) {
 }
 
 export function animateItems(index = 0) {
-  
+
+  const windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
 
   const items = document.querySelectorAll("#process_line .item");
 
-  items.forEach((item)=>{
-    item.style.setProperty("--line", "0%");
-  })
 
   if (index < items.length) {
-    animateItem(items[index], () => {
-      let l = (100 / items.length) * (index*2);
-      animateItems(index + 1);
-      document.querySelector("#process_line").style.setProperty("--line", l + "%");
-    });
+
+    let firstItem = document.querySelectorAll('#process_line .item')[index];
+    let offsetLeft = firstItem.offsetLeft + (firstItem.clientWidth / 2);
+    document.querySelector("#process_line").style.setProperty("--line", offsetLeft + "px");
+
+    setTimeout(() => {
+      animateItem(items[index], () => {
+        animateItems(index + 1);
+      });
+    }, 600)
+
+  } else {
+    document.querySelector("#process_line").style.setProperty("--line", "100%");
   }
 
 }
-

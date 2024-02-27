@@ -242,6 +242,10 @@
 
                 .bookmark{
                     overflow: hidden;
+                    @media only screen and (max-width: 1024px){
+                        padding-left: 30px;
+                        padding-right: 30px;
+                    }
                     .label{
                         display: flex;
                         
@@ -501,9 +505,9 @@
                             top: 0;
                             p{
                                 position: absolute;
-                                left: 6.2%;
+                                left: 8.65%;
                                 top: 45px;
-                                width: 35.25%;
+                                width: 32.25%;
                                 box-sizing: border-box;
                                 padding-right: 50px;
                                 &::before{
@@ -525,7 +529,8 @@
                             p{
                                 position: absolute;
                                 top: 105%;
-                                left: -80px;
+                                left: -110px;
+                                width: 370px;
                                 &::before{
                                     content: '';
                                     width: 1px;
@@ -773,6 +778,9 @@
                             background-color: rgba(0, 73, 166, 0.9);
                             transition: 0.6s;
                             opacity: 1;
+                            @media only screen and (max-width: 1024px){
+                                display: none;
+                            }
                         }
 
                         &::after {
@@ -791,6 +799,9 @@
                             color: #fff;
                             transition: 0.6s;
                             opacity: 1;
+                            @media only screen and (max-width: 1024px){
+                                display: none;
+                            }
                         }
 
                         img {
@@ -833,6 +844,14 @@
             margin-right: auto;
             padding-left: 20px;
             padding-right: 20px;
+
+            @media only screen and (max-width: 1024px) {
+                overflow-y: hidden;
+                overflow-x: auto;
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
 
             ul {
                 width: 100%;
@@ -923,6 +942,7 @@
                     }
 
                     .node {
+                        cursor: pointer;
                         border-radius: 999px;
                         height: 20px;
                         width: 20px;
@@ -939,6 +959,18 @@
                             border-radius: none;
                             display: block;
                             margin-bottom: 50px;
+                        }
+
+                        &::after {
+                            content: '';
+                            width: 1px;
+                            height: 8px;
+                            background-color: #fff;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            opacity: 1;
                         }
 
                         &::before {
@@ -974,6 +1006,9 @@
                         padding-top: 75px;
                         padding-bottom: 50px;
                         padding-left: 75px;
+                        overflow: hidden;
+                        transition: 0.3s;
+                        opacity: 1;
 
                         @media only screen and (max-width: 1024px) {
                             padding-left: 0;
@@ -1010,6 +1045,8 @@
                     width: 360px;
                     box-sizing: border-box;
                     position: relative;
+                    overflow: hidden;
+                    transition: 0.3s;
 
                     @media only screen and (max-width: 1024px) {
                         width: calc(100% - 10px);
@@ -1048,20 +1085,25 @@
                         }
                     }
                 }
-
-                &:nth-child(1) {
-                    .text {
-                        .node {
-                            &::after {
-                                content: '';
-                                width: 1px;
-                                height: 8px;
-                                background-color: #fff;
-                                position: absolute;
-                                top: 50%;
-                                left: 50%;
-                                transform: translate(-50%, -50%);
+                
+                &.open{
+                    @media only screen and (min-width: 1025px){
+                        .text{
+                            .node{
+                                &::after{
+                                    opacity: 0;
+                                }
                             }
+                            ul{
+                                height: 0;
+                                padding: 0;
+                                opacity: 0;
+                            }
+                        }
+                        .pic{
+                            height: 0;
+                            padding: 0;
+                            opacity: 0;
                         }
                     }
                 }
@@ -1415,6 +1457,9 @@
                         &.code{
                             width: 250px;
                             margin-right: 20px;
+                            @media only screen and (max-width: 1024px){
+                                margin-bottom: 15px;
+                            }
                         }
                     }
                     textarea{
@@ -1438,6 +1483,10 @@
                     font-size: 20px;
                     font-weight: 600;
                     border: none;
+                    transition: 0.3s;
+                    &:hover{
+                        background-color: #3094A5;
+                    }
                 }
                 .select_box{
                     position: relative;

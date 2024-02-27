@@ -73,7 +73,7 @@ const destroy_type = ref([
       {
         no: "03",
         title: "金融證券",
-        text: "交易明細、財務報表、合約、客戶資料、報表、過期有價證卷等",
+        text: "交易明細、財務報表、合約、客戶資料、報表、過期有價證劵等",
       },
       {
         no: "04",
@@ -104,7 +104,7 @@ const destroy_type = ref([
         no: "09",
         title: "個人資料",
         text: "醫療單據、醫療紀錄、信用卡帳單、發票明細等",
-      }
+      },
     ],
     type_text:
       "違禁品：資料夾、塑膠套、塑膠外皮、筆記本的線圈、照片、電子發票、工程圖、X光片、CD、DVD",
@@ -202,8 +202,6 @@ function cost() {
   });
 }
 
-
-
 function slick() {
   $(".destroy_type_wrapper").slick({
     infinite: true,
@@ -224,10 +222,10 @@ function destroy_switch(data) {
   destroy.value = data;
   destroy_an.value = false;
 
-  if(destroy.value==1){
-    scrollToElement;
+  if (destroy.value === 1) {
+    scrollToElement("hdd");
   }
-  
+
   setTimeout(() => {
     destroy_an.value = true;
   }, 300);
@@ -240,13 +238,12 @@ onMounted(() => {
     let m = wh / 2 + ws;
 
     if ($("#process_line").offset().top < m + wh / 4) {
+      animateItems(0);
 
-      animateItems();
-      
-      setInterval(()=>{
-        animateItems();
-      },30000);
-      
+      // setInterval(()=>{
+      //   animateItems();
+      // },30000);
+
       document.removeEventListener("scroll", scrollingHandler);
     }
   };
@@ -276,7 +273,15 @@ onBeforeUnmount(() => {
       </div>
       <div id="banner_title">
         <h2 class="an fd">資安銷毀</h2>
-        <h3 class="an fd">企業服務 / 企業清運服務</h3>
+        <h3 class="an fd">
+          <span>
+            <router-link to="/">企業服務</router-link>
+          </span>
+          / 
+          <span>
+            <router-link to="/enterprise">企業清運服務</router-link>
+          </span>
+        </h3>
       </div>
       <div id="serve_introduce">
         <div id="serve_introduce_content">
@@ -321,13 +326,16 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <div id="destroy" class="an fu">
-        <div id="destroy_label">
+      <div id="destroy">
+        <div id="destroy_label" class="an fu">
           <div
             class="item"
             v-for="(item, index) in destroy_info"
             :key="index"
-            @click="destroy_switch(index); scrollToElement('hdd')"
+            @click="
+              destroy_switch(index);
+              destroy = index;
+            "
             :class="{ active: destroy == index }"
           >
             <span>{{ item.title }}</span>
@@ -336,7 +344,7 @@ onBeforeUnmount(() => {
 
         <div id="destroy_info">
           <div class="item">
-            <div class="text">
+            <div class="text an fr">
               <h3 :class="{ active: destroy_an }">
                 {{ destroy_info[destroy].title }}
               </h3>
@@ -417,9 +425,7 @@ onBeforeUnmount(() => {
             </div>
             <div class="text">
               <h4>準備文件</h4>
-              <p>
-                注意不含違禁品
-              </p>
+              <p>注意不含違禁品</p>
             </div>
           </div>
           <div class="item anp fr">
@@ -619,9 +625,11 @@ onBeforeUnmount(() => {
 
       <div id="destroy_process">
         <div class="title an fu">
-          <h2>抹除 <span>品項＆流程</span></h2>
+          <h2 v-if="destroy_class==0">抹除 <span>品項＆流程</span></h2>
+          <h2 v-if="destroy_class==1">消磁 <span>品項＆流程</span></h2>
+          <h2 v-if="destroy_class==2">破壞 <span>品項＆流程</span></h2>
         </div>
-        <div class="content an fu">
+        <div class="content">
           <div class="item" :class="{ active: destroy_class == 0 }">
             <h3>服務品項：手機、USB隨身碟、硬碟、SSD、固態式硬碟</h3>
             <div class="process_content">
@@ -635,10 +643,7 @@ onBeforeUnmount(() => {
                 <p>插入隨身碟/寄MAIL驅動程式/從雲端下載驅動程式</p>
               </div>
               <div class="arrow">
-                <img
-                  src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
-                  alt="arrow"
-                />
+                <span class="icon" />
               </div>
               <div class="item_process">
                 <div class="pic">
@@ -695,11 +700,8 @@ onBeforeUnmount(() => {
                 </div>
                 <p>掃描條碼紀錄</p>
               </div>
-              <div class="arrow">
-                <img
-                  src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
-                  alt="arrow"
-                />
+              <div class="arrow big">
+                <span class="icon" />
               </div>
               <div class="item_process">
                 <div class="big_pic">
@@ -710,10 +712,11 @@ onBeforeUnmount(() => {
                 </div>
                 <p>一秒強力消磁</p>
                 <span>
-                  符合ISO27001資訊銷銷毀規範，以10,000Oe以上，一秒瞬間消磁
+                  符合ISO27001（資訊安全管理系統的國際規範）<br>
+                  磁場強度可達10,000 Oe以上，瞬間1秒銷（消）毀
                 </span>
               </div>
-              <div class="arrow">
+              <div class="arrow big">
                 <img
                   src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
                   alt="arrow"
@@ -731,7 +734,7 @@ onBeforeUnmount(() => {
             </div>
           </div>
           <div class="item" :class="{ active: destroy_class == 2 }">
-            <h3>服務品項：手機、USB隨身碟、硬碟、SSD、固態式硬碟</h3>
+            <h3>服務品項：HDD,2.5吋/3.5吋HDD硬碟、SSD固態硬碟、M.2磁碟、SATA</h3>
             <div class="process_content">
               <div class="item_process">
                 <div class="big_pic">
@@ -742,11 +745,8 @@ onBeforeUnmount(() => {
                 </div>
                 <p>重力鑽孔加壓破壞</p>
               </div>
-              <div class="arrow">
-                <img
-                  src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
-                  alt="arrow"
-                />
+              <div class="arrow big">
+                <span class="icon" />
               </div>
               <div class="item_process">
                 <div class="big_pic">
@@ -757,7 +757,7 @@ onBeforeUnmount(() => {
                 </div>
                 <p>V型對折下壓式破壞</p>
               </div>
-              <div class="arrow">
+              <div class="arrow big">
                 <img
                   src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
                   alt="arrow"

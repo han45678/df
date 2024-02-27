@@ -8,19 +8,19 @@ import 'slick-carousel/slick/slick.js';
 
 const banner_text = ref([
   {
-    text: "<h3>以企業願景<br>實現減碳行動</h3><p>No Waste, only misplaced resources.</p>",
+    text: "<h3>以企業願景<br>實現減碳行動</h3><p>Corporate vision achieving<br/>Carbon reduction</p>",
   },
   {
-    text: "<h3>以企業願景<br>實現減碳行動</h3><p>No Waste, only misplaced resources.</p>",
+    text: "<h3>以企業願景<br>實現減碳行動</h3><p>Corporate vision achieving<br/>Carbon reduction</p>",
   },
 ]);
 
 const banner_pic = ref([
   {
-    pic: "banner.jpg",
+    pic: "banner01.jpg",
   },
   {
-    pic: "banner.jpg",
+    pic: "banner02.jpg",
   },
 ]);
 
@@ -97,7 +97,7 @@ onMounted(() => {
                 <span>
                     <router-link to="/">大豐環保</router-link>
                 </span>
-                /企業服務
+                / 企業服務
             </h3>
         </div>
         <div id="serve_introduce">
@@ -155,7 +155,7 @@ onMounted(() => {
                         </a>
                         <a class="item item3" href="javascript:void(0)">
                             <div class="text">
-                                <h5>報廢物減量<span>SRF</span></h5>
+                                <h5>廢棄物減量<span>SRF</span></h5>
                                 <p>廢棄物規劃 / 能源化SRF</p>
                             </div>
                             <div class="pic">
@@ -208,13 +208,16 @@ onMounted(() => {
                     服務優勢
                 </h3>
             </div>
-            <div id="advantage_content">
+            <div id="advantage_content" class="lazy_img_wrapper">
                 <div class="item an fu">
                     <div class="no">
                         01
                     </div>
                     <div class="icon">
-                        <img class="lazy_img" :data-src="require(`@/assets/images/icon/enterprise_1.svg`)" :src="require(`@/assets/images/icon/enterprise_1.svg`)" alt="icon">
+                        <div 
+                            class="lazy_img_pic lazy_img" 
+                            :data-src="require(`@/assets/images/icon/enterprise_1.svg`)"
+                        />
                     </div>
                     <div class="text">
                         <h4>
@@ -231,7 +234,10 @@ onMounted(() => {
                         02
                     </div>
                     <div class="icon">
-                        <img class="lazy_img" :data-src="require(`@/assets/images/icon/enterprise_2.svg`)" :src="require(`@/assets/images/icon/enterprise_2.svg`)"  alt="icon">
+                        <div 
+                            class="lazy_img_pic lazy_img" 
+                            :data-src="require(`@/assets/images/icon/enterprise_2.svg`)"
+                        />
                     </div>
                     <div class="text">
                         <h4>
@@ -248,7 +254,10 @@ onMounted(() => {
                         03
                     </div>
                     <div class="icon">
-                        <img class="lazy_img" :data-src="require(`@/assets/images/icon/enterprise_3.svg`)" :src="require(`@/assets/images/icon/enterprise_3.svg`)" alt="icon">
+                        <div 
+                            class="lazy_img_pic lazy_img" 
+                            :data-src="require(`@/assets/images/icon/enterprise_3.svg`)"
+                        />
                     </div>
                     <div class="text">
                         <h4 class="color_main">
@@ -265,7 +274,10 @@ onMounted(() => {
                         04
                     </div>
                     <div class="icon">
-                        <img loading="lazy" class="lazy_img" :data-src="require(`@/assets/images/icon/enterprise_4.svg`)" :src="require(`@/assets/images/icon/enterprise_4.svg`)" alt="icon">
+                        <div 
+                            class="lazy_img_pic lazy_img" 
+                            :data-src="require(`@/assets/images/icon/enterprise_4.svg`)"
+                        />
                     </div>
                     <div class="text">
                         <h4>
@@ -282,7 +294,10 @@ onMounted(() => {
                         05
                     </div>
                     <div class="icon">
-                        <img loading="lazy" class="lazy_img"  :data-src="require(`@/assets/images/icon/enterprise_5.svg`)" :src="require(`@/assets/images/icon/enterprise_5.svg`)" alt="icon">
+                        <div 
+                            class="lazy_img_pic lazy_img" 
+                            :data-src="require(`@/assets/images/icon/enterprise_5.svg`)"
+                        />
                     </div>
                     <div class="text">
                         <h4>

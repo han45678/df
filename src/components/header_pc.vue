@@ -4,7 +4,7 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 
 const router = useRouter();
 
-const props = defineProps(["logo_color", "fixed"]);
+const props = defineProps(["logo_color", "fixed","scroll"]);
 
 const header = ref(null);
 
@@ -34,7 +34,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <header ref="header" :class="{ fixed: props.fixed, scroll: scroll }">
+  <header ref="header" :class="{ fixed: props.fixed, initial_scroll: props.scroll , scroll: scroll }">
     <router-link to="/" id="logo">
       <h1>大豐環保科技股份有限公司</h1>
       <img
@@ -70,45 +70,52 @@ onMounted(() => {
               <div class="submenu_content_main">
                 <div class="submenu_content_item">
                   <router-link
-                    :class="{
-                      current:
-                        path === 'enterprise' ||
-                        path === 'industrialwaste' ||
-                        path === 'scrap' ||
-                        path === 'docdestroy' ||
-                        path === 'wood',
-                    }"
+                    :class="{active:path=='enterprise'||'scrap'||'docdestroy'||'wood'}"
                     to="/enterprise"
-                    >企業清運服務</router-link
-                  >
+                    >企業清運服務</router-link>
 
                   <div class="submenu_content_item_contet">
                     <router-link
-                      :class="{ current: path == 'industrialwaste' }"
+                    :class="{active:path=='industrialwaste'}"
                       to="/industrialwaste"
                       >事業廢棄物</router-link
                     >
                     <router-link
-                      :class="{ current: path == 'scrap' }"
+                    :class="{active:path=='scrap'}"
                       to="/scrap"
                       >報廢服務</router-link
                     >
                     <router-link
-                      :class="{ current: path == 'docdestroy' }"
+                    :class="{active:path=='docdestroy'}"
                       to="/docdestroy"
                       >資安銷毀</router-link
                     >
                     <router-link
-                      :class="{ current: path == 'wood' }"
+                    :class="{active:path=='wood'}"
                       to="./wood"
                       >廢木材清運</router-link
+                    >
+
+                    <router-link
+                      to="./"
+                      >廢棄物減量</router-link
+                    >
+
+                    <router-link
+                      to="./"
+                      >廢棄物棄置案</router-link
+                    >
+
+                    <router-link
+                      to="./"
+                      >生活垃圾清運</router-link
                     >
                   </div>
                 </div>
 
                 <div class="submenu_content_item">
                   <router-link
-                    :class="{ current: path == 'pcr-materials' }"
+                    :class="{active:path=='pcr-materials'}"
                     to="./pcr-materials"
                     >再生塑膠材料</router-link
                   >
@@ -124,22 +131,22 @@ onMounted(() => {
             <div class="ad">
               <img
                 loading="lazy"
-                src="@/assets/images/menu_pic.jpg"
+                src="@/assets/images/menu_pic2.jpg"
                 alt="pic"
               />
-              <h3>美國FDA再生料食品級認證</h3>
+              <h3>企業清運服務</h3>
             </div>
           </div>
         </li>
 
         <li>
-          <router-link :class="{ current: path == 'locations' }" to="/locations"
+          <router-link to="/locations"
             >服務據點</router-link
           >
         </li>
 
         <li>
-          <router-link :class="{ current: path == 'news' }" to="/news"
+          <router-link to="/news/0"
             >最新消息</router-link
           >
         </li>
@@ -157,28 +164,24 @@ onMounted(() => {
               <div class="submenu_content_main">
                 <div class="submenu_content_item no_arrow">
                   <router-link
-                    :class="{ current: path == 'aboutdafon' }"
                     to="/aboutdafon"
                     >公司文化</router-link
                   >
                 </div>
                 <div class="submenu_content_item no_arrow">
                   <router-link
-                    :class="{ current: path == 'history' }"
                     to="/history"
                     >重要紀事</router-link
                   >
                 </div>
                 <div class="submenu_content_item no_arrow">
                   <router-link
-                    :class="{ current: path == 'certificate' }"
                     to="/certificate"
                     >專業認證</router-link
                   >
                 </div>
                 <div class="submenu_content_item no_arrow">
                   <router-link
-                    :class="{ current: path == 'certificate' }"
                     to="/certificate"
                     >人才招募</router-link
                   >
@@ -190,7 +193,6 @@ onMounted(() => {
                 </div>
                 <div class="submenu_content_item no_arrow">
                   <router-link
-                    :class="{ current: path == 'contact' }"
                     to="/contact"
                     >聯絡我們</router-link
                   >

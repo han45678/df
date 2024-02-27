@@ -4,11 +4,37 @@ import vfooter from "@/components/footer.vue";
 import { ref, onMounted } from "vue";
 import axios from "axios";
 
-const googleMapsScript = document.createElement('script');
-googleMapsScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCgqDzQUEz5y1vxK46m-UXpVO_AD2jSO6Q&callback=initMap`;
-googleMapsScript.defer = true;
-document.head.appendChild(googleMapsScript);
+// const googleMapsScript = document.createElement('script');
+// googleMapsScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCgqDzQUEz5y1vxK46m-UXpVO_AD2jSO6Q&callback=initMap`;
+// googleMapsScript.defer = true;
+// document.head.appendChild(googleMapsScript);
 
+async function loadScript(url) {
+  return new Promise((res) => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    if (script.readyState) {
+      // only required for IE <9
+      script.onreadystatechange = function () {
+        if (
+          script.readyState === "loaded" ||
+          script.readyState === "complete"
+        ) {
+          script.onreadystatechange = null;
+          res();
+        }
+      };
+    } else {
+      //Others
+      script.onload = function () {
+        res();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  });
+}
 
 const mapView = ref(null);
 
@@ -20,18 +46,19 @@ const area = ref("台中市");
 const keywords = ref("");
 
 // 型態
-const business_type = ref("大豐環保");
+const business_type = ref("經營型態");
+const business_type_no = ref(null);
 const business_type_info = ref([]);
 const locations = ref([]);
 
-
 function openMap() {
-  
   const map = new window.google.maps.Map(mapView.value, {
-
-    center: { 
-      lat:parseFloat(filterLocations.value[0].latitude - 0.075), 
-      lng: window.innerWidth > 1024 ? parseFloat(filterLocations.value[0].longitude - 0.15) : parseFloat(filterLocations.value[0].longitude)
+    center: {
+      lat: parseFloat(filterLocations.value[0].latitude - 0.075),
+      lng:
+        window.innerWidth > 1024
+          ? parseFloat(filterLocations.value[0].longitude - 0.15)
+          : parseFloat(filterLocations.value[0].longitude),
     },
     zoom: 12,
     styles: [
@@ -220,14 +247,17 @@ function openMap() {
     };
 
     const marker = new window.google.maps.Marker({
-      position: { lat: parseFloat(location.latitude), lng: parseFloat(location.longitude) },
+      position: {
+        lat: parseFloat(location.latitude),
+        lng: parseFloat(location.longitude),
+      },
       map,
       title: location.name,
       icon: customIcon,
     });
 
     const infoWindow = new window.google.maps.InfoWindow({
-      content: `<div><strong>${location.name}</strong><br>${location.address}<br>Tel: ${location.tel}<br>Hours: ${location.hours}</div>`,
+      content: `<div><strong>${location.title}</strong><br>${location.address}<br>Tel: ${location.phone}<br>Hours: ${location.btime}</div>`,
     });
 
     marker.addListener("click", () => {
@@ -236,61 +266,149 @@ function openMap() {
   }
 }
 
+function type_switch(data) {
+  console.log(data);
+  business_type.value = business_type_info.value[data].name;
+  business_type_no.value = business_type_info.value[data].id;
+}
+
 const filterLocations = ref(null);
+
+//沒有定位下篩選
+function filterLocationsFilter() {
+  filterLocations.value = locations.value
+    .filter((item) => {
+      // Check if area.value is not the default value
+      const isAreaMatch = item.regionsname === area.value;
+
+      // Check if business_type.value is not the default value
+      const isBusinessTypeMatch = business_type.value !== "經營型態" ? item.type == business_type_no.value : true;
+
+      // Check if keywords are included in name or address
+      const isKeywordMatch =
+        (item.name && item.name.includes(keywords.value)) ||
+        (item.address && item.address.includes(keywords.value));
+
+      // Include the item in the filtered result only if all conditions are met
+      return isAreaMatch && isBusinessTypeMatch && isKeywordMatch;
+    })
+    .slice(0, 5);
+
+  openMap();
+}
+
+// 計算距離的函數
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371; // 地球半徑（單位：公里）
+  const dLat = (lat2 - lat1) * (Math.PI / 180);
+  const dLon = (lon2 - lon1) * (Math.PI / 180);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * (Math.PI / 180)) *
+      Math.cos(lat2 * (Math.PI / 180)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = R * c; // 距離（單位：公里）
+  return distance;
+}
 
 // 點擊事件處理函數
 const handleFilterClick = () => {
-    filterLocations.value = locations.value.slice(0, 5);
-
-    // .filter((item) => {
-    //     // Check if area.value is not the default value
-    //     const isAreaMatch = area.value !== "縣市地區" ? item.name === area.value : true;
-        
-    //     // Check if business_type.value is not the default value
-    //     const isBusinessTypeMatch = business_type.value !== "經營型態" ? item.name === business_type.value : true;
-
-    //     // Check if keywords are included in name or address
-    //     const isKeywordMatch = (item.name && item.name.includes(keywords.value)) || (item.address && item.address.includes(keywords.value));
-
-    //     // Include the item in the filtered result only if all conditions are met
-    //     return isAreaMatch && isBusinessTypeMatch && isKeywordMatch;
-    // })
-
-    openMap();
+  filterLocationsFilter();
 };
 
+function getMap() {
+  // 使用 Promise.all 等待所有完成
+  Promise.all([
+    axios.get("http://34.81.192.108:13000/api/v1/locations/list"),
+    axios.get("http://34.81.192.108:13000/api/v1/locations/business"),
+    axios.get("http://34.81.192.108:13000/api/v1/locations/regions"),
+  ])
+    .then((responses) => {
+      const [locationsResponse, businessResponse, regionsResponse] = responses;
 
-// 使用 Promise.all 等待所有请求完成
-Promise.all([
-  axios.get("http://34.81.192.108:13000/api/v1/locations/list"),
-  axios.get("http://34.81.192.108:13000/api/v1/locations/business"),
-  axios.get("http://34.81.192.108:13000/api/v1/locations/regions")
-])
-  .then((responses) => {
-    
-    const [locationsResponse, businessResponse, regionsResponse] = responses;
+      // 資料列表
+      locations.value = locationsResponse.data.result.locations;
 
-    // 資料列表
-    locations.value = locationsResponse.data.result.locations;
+      // 資料型態
+      business_type_info.value = businessResponse.data.result.business;
 
-    // 資料型態
-    business_type_info.value = businessResponse.data.result.business;
+      // 縣市資料
+      area_info.value = regionsResponse.data.result.regions;
 
-    // 縣市資料
-    area_info.value = regionsResponse.data.result.regions;
-    
-    console.log("1");
+      // load.value = true;
 
-    // 执行处理地图的函数
-    googleMapsScript.onload = handleFilterClick;
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          // 獲取經緯度
+          var latitude = position.coords.latitude;
+          var longitude = position.coords.longitude;
 
-  })
-  .catch((error) => {
-    console.error("Error:", error);
-  });
+          // 在控制台顯示座標
+          console.log("緯度：" + latitude + ", 經度：" + longitude);
 
-onMounted(() => {
-  // googleMapsScript.onload = handleFilterClick;
+          const currentLatitude = latitude; // 你的緯度
+          const currentLongitude = longitude; // 你的經度
+
+          // 找到最接近的位置
+          let closestLocation = null;
+          let closestDistance = Infinity;
+
+          locations.value.forEach((location) => {
+            const distance = calculateDistance(
+              currentLatitude,
+              currentLongitude,
+              location.latitude,
+              location.longitude
+            );
+            if (distance < closestDistance) {
+              closestDistance = distance;
+              closestLocation = location;
+            }
+          });
+
+          filterLocations.value = closestLocation;
+
+          // 這裡可以根據獲得的座標進一步處理
+        },
+        function (error) {
+          // 如果無法獲取座標，可以處理錯誤
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              // 觸發地圖
+              handleFilterClick();
+              console.error("使用者拒絕提供座標");
+              break;
+            case error.POSITION_UNAVAILABLE:
+              // 觸發地圖
+              handleFilterClick();
+              console.error("無法獲取座標資訊");
+              break;
+            case error.TIMEOUT:
+              // 觸發地圖
+              handleFilterClick();
+              console.error("獲取座標資訊逾時");
+              break;
+            case error.UNKNOWN_ERROR:
+              // 觸發地圖
+              handleFilterClick();
+              console.error("發生未知錯誤");
+              break;
+          }
+        }
+      );
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+
+onMounted(async () => {
+  await loadScript(
+    `https://maps.googleapis.com/maps/api/js?key=AIzaSyCgqDzQUEz5y1vxK46m-UXpVO_AD2jSO6Q&callback=initMap`
+  );
+  getMap();
 });
 </script>
 <template>
@@ -300,13 +418,25 @@ onMounted(() => {
     <main id="locations">
       <div id="banner">
         <div id="banner_pic">
-          <img loading="lazy" src="@/assets/images/locations/banner.jpg" alt="banner" />
+          <img
+            loading="lazy"
+            class="pc"
+            src="@/assets/images/locations/banner.jpg"
+            alt="banner"
+          />
+          <img
+            loading="lazy"
+            class="m"
+            src="@/assets/images/locations/banner_m.jpg"
+            alt="banner"
+          />
         </div>
       </div>
       <div id="banner_title">
         <h2 class="an fd">服務據點</h2>
         <h3 class="an fd">
-          <span><router-link to="/">大豐環保</router-link></span>/服務據點
+          <span><router-link class="color" to="/">大豐環保</router-link></span>
+          / 服務據點
         </h3>
       </div>
       <div id="locations_content">
@@ -351,7 +481,7 @@ onMounted(() => {
                   <li
                     v-for="(item, index) in business_type_info"
                     :key="index"
-                    @click="business_type = index"
+                    @click="type_switch(index)"
                   >
                     {{ item.name }}
                   </li>
@@ -363,21 +493,21 @@ onMounted(() => {
             <div id="locations_icon">
               <div class="item">
                 <img
-                  src="@/assets/images/locations/map_icon01.svg"
+                  src="@/assets/images/locations/map_icon01.png"
                   alt="icon"
                 />
                 <span>大豐環保</span>
               </div>
               <div class="item">
                 <img
-                  src="@/assets/images/locations/map_icon02.svg"
+                  src="@/assets/images/locations/map_icon02.png"
                   alt="icon"
                 />
                 <span>合作據點</span>
               </div>
               <div class="item">
                 <img
-                  src="@/assets/images/locations/map_icon03.svg"
+                  src="@/assets/images/locations/map_icon03.png"
                   alt="icon"
                 />
                 <span>zero zero</span>
@@ -395,7 +525,7 @@ onMounted(() => {
                   </div>
                   <div class="name" v-html="item.title" />
                   <div class="address">
-                    <p>{{ item.address }}　​{{ item.phone }}​</p>
+                    <p>{{ item.address }}　<br />​{{ item.phone }}​</p>
                     <p>{{ item.btime }}​</p>
                   </div>
                   <div class="type">
@@ -431,7 +561,11 @@ onMounted(() => {
       <div id="more" class="an fu">
         <router-link to="/locations">
           <span>資源回收站</span>
-          <img loading="lazy" src="@/assets/images/company_serve/more_arrow.svg" alt="arrow" />
+          <img
+            loading="lazy"
+            src="@/assets/images/company_serve/more_arrow.svg"
+            alt="arrow"
+          />
         </router-link>
       </div>
     </main>

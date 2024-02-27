@@ -83,14 +83,14 @@ function initializeSlick() {
             slidesToShow: 1,
             slidesToScroll: 1,
           },
-        }
+        },
       ],
     });
     slickInitialized.value = true;
   }
 
-  $("#serve_content_top").on('beforeChange',()=>{
-    detail_open.value=false;
+  $("#serve_content_top").on("beforeChange", () => {
+    detail_open.value = false;
   });
 }
 
@@ -117,25 +117,25 @@ function handleWindowSize() {
 
 onMounted(() => {
   const scrollingHandler = () => {
-        let wh = window.innerHeight || document.documentElement.clientHeight;
-        let ws = window.pageYOffset || document.documentElement.scrollTop;
-        let m = wh / 2 + ws;
+    let wh = window.innerHeight || document.documentElement.clientHeight;
+    let ws = window.pageYOffset || document.documentElement.scrollTop;
+    let m = wh / 2 + ws;
 
-        // Replace '#process_line' with the actual ID or class of your element
-        let processLineElement = document.getElementById('process_line');
-        
-        if (processLineElement && processLineElement.offsetTop < m + wh / 4) {
-          animateItems();
+    // Replace '#process_line' with the actual ID or class of your element
+    let processLineElement = document.getElementById("process_line");
 
-          setInterval(()=>{
-            animateItems();
-          },30000);
-            document.removeEventListener('scroll', scrollingHandler);
-        }
-    };
+    if (processLineElement && processLineElement.offsetTop < m + wh / 4) {
+      animateItems();
 
-    document.addEventListener('scroll', scrollingHandler);
-    
+      // setInterval(()=>{
+      //   animateItems();
+      // },30000);
+      document.removeEventListener("scroll", scrollingHandler);
+    }
+  };
+
+  document.addEventListener("scroll", scrollingHandler);
+
   handleWindowSize();
   window.addEventListener("resize", handleWindowSize);
 });
@@ -163,7 +163,9 @@ onMounted(() => {
       </div>
       <div id="banner_title">
         <h2 class="an fd">事業廢棄物</h2>
-        <h3 class="an fd"><span><router-link to="/">大豐環保</router-link></span> / 企業清運服務</h3>
+        <h3 class="an fd">
+          <span><router-link to="/">企業服務</router-link></span>/ 企業清運服務
+        </h3>
       </div>
       <div id="serve_introduce">
         <div id="serve_introduce_content">
@@ -199,11 +201,9 @@ onMounted(() => {
             <div class="item an fu">
               <div class="no">01</div>
               <div class="icon">
-                <img
-                  class="lazy_img"
+                <div
+                  class="lazy_img_pic lazy_img"
                   :data-src="require(`@/assets/images/icon/enterprise_6.svg`)"
-                  :src="require(`@/assets/images/icon/enterprise_6.svg`)"
-                  alt="icon"
                 />
               </div>
               <div class="text">
@@ -214,11 +214,9 @@ onMounted(() => {
             <div class="item an fu">
               <div class="no">02</div>
               <div class="icon">
-                <img
-                  class="lazy_img"
+                <div
+                  class="lazy_img_pic lazy_img"
                   :data-src="require(`@/assets/images/icon/enterprise_7.svg`)"
-                  :src="require(`@/assets/images/icon/enterprise_7.svg`)"
-                  alt="icon"
                 />
               </div>
               <div class="text">
@@ -229,11 +227,9 @@ onMounted(() => {
             <div class="item an fu">
               <div class="no">03</div>
               <div class="icon">
-                <img
-                  class="lazy_img"
+                <div
+                  class="lazy_img_pic lazy_img"
                   :data-src="require(`@/assets/images/icon/enterprise_8.svg`)"
-                  :src="require(`@/assets/images/icon/enterprise_8.svg`)"
-                  alt="icon"
                 />
               </div>
               <div class="text">
@@ -256,7 +252,6 @@ onMounted(() => {
               :key="index"
               @click="detail_open = true"
             >
-              
               <div class="pic">
                 <div class="no">{{ item.no }}</div>
                 <img
@@ -286,25 +281,25 @@ onMounted(() => {
                 <div id="serve_content_bottom_content">
                   <ul class="active">
                     <li>
-                      <span class="title">1、廢五金類：</span
-                      >廢鋼、廢鐵、廢不鏽鋼、廢電線、含銅廢料(銅箔、銅球、銅塊、青銅…)、廢鐵屑、特殊合金等
+                      <span class="title">1、廢五金類：</span>
+                      <span class="content">廢鋼、廢鐵、廢不鏽鋼、廢電線、含銅廢料(銅箔、銅球、銅塊、青銅…)、廢鐵屑、特殊合金等</span>
+                      
                     </li>
                     <li>
-                      <span class="title">2、廢塑膠回收：</span
-                      >PE．PP聚乙烯(PE)、高分子聚乙烯(UPE)、聚丙烯(PP)、MC
-                      尼龍、PU．ABS、聚氨酯制品PU、ABS樹脂、聚縮醛(POM)、PVC、聚氯乙烯(CPVC)。
+                      <span class="title">2、廢塑膠回收：</span>
+                      <span class="content">PE．PP聚乙烯(PE)、高分子聚乙烯(UPE)、聚丙烯(PP)、MC尼龍、PU．ABS、聚氨酯制品PU、ABS樹脂、聚縮醛(POM)、PVC、聚氯乙烯(CPVC)。</span>
                     </li>
                     <li>
-                      <span class="title">3、廢紙類：</span
-                      >電子廠墊襯白紙、廢紙箱、廢紙切邊料、淋膜紙、紙箱、報表紙等，(大豐另有機密文件銷毀服務)。
+                      <span class="title">3、廢紙類：</span>
+                      <span class="content">電子廠墊襯白紙、廢紙箱、廢紙切邊料、淋膜紙、紙箱、報表紙等，(大豐另有機密文件銷毀服務)。</span>
                     </li>
                     <li>
-                      <span class="title">4、貴金屬類：</span
-                      >各類含金廢料(導線架、金板、金框…)、含銀廢料(銅鍍銀、鎳鍍銀、銀膠、廢銀液..)、含鈀廢料、含銦廢料、各式靶材回收等。
+                      <span class="title">4、貴金屬類：</span>
+                      <span class="content">各類含金廢料(導線架、金板、金框…)、含銀廢料(銅鍍銀、鎳鍍銀、銀膠、廢銀液..)、含鈀廢料、含銦廢料、各式靶材回收等。</span>
                     </li>
                     <li>
-                      <span class="title">5、電子零件類：</span>廢
-                      IC、廢晶片、廢BGA、廢PCB板、電晶體、軟板、電子元件、LED、電子零組件下腳料、庫存品(料)等。
+                      <span class="title">5、電子零件類：</span>
+                      <span class="content">廢IC、廢晶片、廢BGA、廢PCB板、電晶體、軟板、電子元件、LED、電子零組件下腳料、庫存品(料)等。</span>
                     </li>
                   </ul>
                 </div>
@@ -313,7 +308,15 @@ onMounted(() => {
           </transition>
         </div>
       </div>
-      <div id="forest_bg" :style="{ backgroundImage: 'url(' + require('@/assets/images/company_serve/industrialwaste/tree.jpg') + ')' }"></div>
+      <div
+        id="forest_bg"
+        :style="{
+          backgroundImage:
+            'url(' +
+            require('@/assets/images/company_serve/industrialwaste/tree.jpg') +
+            ')',
+        }"
+      ></div>
       <div id="process">
         <div class="title">
           <h3 class="an fu">服務流程</h3>
@@ -329,7 +332,7 @@ onMounted(() => {
               <div class="process_content">
                 <img
                   loading="lazy"
-                  src="@/assets/images/company_serve/process_icon01.svg"
+                  src="@/assets/images/company_serve/process_icon08.svg"
                   alt="icon"
                 />
               </div>
@@ -352,7 +355,7 @@ onMounted(() => {
               <div class="process_content">
                 <img
                   loading="lazy"
-                  src="@/assets/images/company_serve/process_icon02.svg"
+                  src="@/assets/images/company_serve/process_icon04.svg"
                   alt="icon"
                 />
               </div>
@@ -372,7 +375,7 @@ onMounted(() => {
               <div class="process_content">
                 <img
                   loading="lazy"
-                  src="@/assets/images/company_serve/process_icon03.svg"
+                  src="@/assets/images/company_serve/process_icon07.svg"
                   alt="icon"
                 />
               </div>
@@ -392,7 +395,7 @@ onMounted(() => {
               <div class="process_content">
                 <img
                   loading="lazy"
-                  src="@/assets/images/company_serve/process_icon04.svg"
+                  src="@/assets/images/company_serve/process_icon03.svg"
                   alt="icon"
                 />
               </div>

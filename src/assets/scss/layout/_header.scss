@@ -127,6 +127,8 @@ header{
 
                             .submenu_content_item{
                                 .submenu_content_item_contet{
+                                    display: flex;
+                                    flex-wrap: wrap;
                                     transform: translateX(-10%);
                                     opacity: 0;
                                     pointer-events: none;
@@ -135,8 +137,11 @@ header{
                                     left: 100%;
                                     width: 200%;
                                     top: 0;
+                                    a{
+                                        width: 50%;
+                                    }
                                 }
-                                &:hover{
+                                &:hover,&.active{
                                     a{
                                         &::after{
                                             content: ' >';
@@ -170,7 +175,8 @@ header{
                                 padding-bottom:40px;
                                 display:block;
                                 transition: 0.3s;
-                                &:hover{
+                                width: 100%;
+                                &:hover,&.active{
                                     color: $text_submain;
                                 }
                             }
@@ -226,7 +232,7 @@ header{
         }
     }
 
-    &.scroll,&:hover{
+    &.initial_scroll,&.scroll,&:hover{
         background-color: #fff;
 
         #logo{

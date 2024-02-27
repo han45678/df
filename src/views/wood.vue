@@ -6,11 +6,44 @@ import { animateItems } from "@/assets/js/processPlugin";
 import axios from "axios";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+import $ from "jquery";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick.js";
 
 const router = useRouter();
 const store = useStore();
 
+function slick() {
+  $("#wood_content").slick({
+    infinite: true,
+    slidesToShow: 4,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1279,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 1023,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 560,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  });
+}
+
 onMounted(() => {
+  slick();
+
   const scrollingHandler = () => {
     let wh = window.innerHeight || document.documentElement.clientHeight;
     let ws = window.pageYOffset || document.documentElement.scrollTop;
@@ -21,9 +54,9 @@ onMounted(() => {
 
     if (processLineElement && processLineElement.offsetTop < m + wh / 4) {
       animateItems();
-      setInterval(() => {
-        animateItems();
-      }, 30000);
+      //   setInterval(() => {
+      //     animateItems();
+      //   }, 30000);
       document.removeEventListener("scroll", scrollingHandler);
     }
   };
@@ -48,7 +81,10 @@ onMounted(() => {
       <div id="banner_title">
         <h2 class="an fd">廢⽊材清運</h2>
         <h3 class="an fd">
-          <span><router-link to="/">大豐環保</router-link></span> / 企業清運服務
+          <span>
+            <router-link to="/">企業服務</router-link>
+          </span>
+          / 企業清運服務
         </h3>
       </div>
       <div id="serve_introduce">

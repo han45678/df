@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import $ from "jquery";
+import axios from "axios";
 
 import home from "@/views/home.vue";
 import aboutdafon from "@/views/aboutdafon.vue";
@@ -37,6 +38,11 @@ const routes = [
     path: "/contact",
     name: "contact",
     component: contact,
+    meta:{
+      title:'聯絡我們',
+      description: '聯絡我們 大豐環保科技股份有限公司',
+      keywords: '聯絡我們 大豐環保科技股份有限公司'
+    }
   },
   {
     path: "/docdestroy",
@@ -69,7 +75,7 @@ const routes = [
     component: news_page,
   },
   {
-    path: "/news",
+    path: "/news/:news",
     name: "news",
     component: news,
   },
@@ -102,22 +108,34 @@ function handleScroll() {
 
     // Add 'an_go' class to elements in view
     $(".an").each(function () {
-        if ($(this).offset().top < m - $(this).height() / 2 + 400) {
+        if ($(this).offset().top < m - $(this).height() / 2 + 600) {
             $(this).addClass("an_go");
         } else {
             $(this).removeClass("an_go");
         }
     });
-
-    // Remove 'lazy_img' class from images already loaded
-    $(".lazy_img").each(function () {
-        if ($(this).offset().top < m + wh / 4) {
-            $(this).attr('src', $(this).data('src')).removeClass('lazy_img');
-        }
-    });
 }
 
 router.beforeEach((to, from, next) => {
+
+  axios
+  .get("http://34.81.192.108:13000/other/category/getallList")
+  .then((res) => {
+    let meta = res.data.result.rows;
+
+    meta.forEach((item) => {
+      if(item.code==to.name){
+        console.log(item);
+        item.metaData = JSON.parse(item.metaData);
+
+        document.title = item.metaData.metaTitle;
+        document.querySelector('meta[name="description"]').content = item.metaData.metaDescription;
+        document.querySelector('meta[name="keywords"]').content = item.metaData.metaKeywords;
+
+        return;
+      }
+    });
+  })
 
   document.querySelector("#transitions").classList.remove("active");
 
@@ -135,7 +153,6 @@ router.afterEach(() => {
     document.querySelector("#transitions").classList.add("active");
   },600)
 })
-
 
 
 export default router;

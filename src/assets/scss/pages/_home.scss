@@ -13,7 +13,37 @@
             object-fit: cover;
         }
     }
-
+    #home_news{
+        padding: 20px;
+        background-color: #004974;
+        display: none;
+        @media only screen and (max-width: 1024px){
+            display: block;
+        }
+        .item{
+            display: flex !important;
+            align-items: center;
+            width: 100%;
+            h3{
+                color: #fff;
+                box-sizing: border-box;
+                // padding-right: 20px;
+                font-size: 20px;
+                font-weight: 400;
+                width: 70px;
+            }
+            .text{
+                width: calc(100% - 70px);
+                p{
+                    font-size: 12px;
+                    color: #fff;
+                    line-height: 1.5;
+                    font-weight: 400;
+                }
+            }
+        }
+        
+    }
     #corporate {
         padding-top: 100px;
         padding-bottom: 100px;

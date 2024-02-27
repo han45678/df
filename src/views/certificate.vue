@@ -10,17 +10,17 @@ const certificate = ref([
     text: "協助企業維持產品與服務，確保品質穩定一致",
     content: [
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic01_b.jpg",
         thumbnail: "certificate_pic01.jpg",
         text: "通過ISO 9001:2015 品質管理系統",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic02_b.jpg",
         thumbnail: "certificate_pic02.jpg",
         text: "通過ISO 14001:2015 環境管理系統",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic03_b.jpg",
         thumbnail: "certificate_pic03.jpg",
         text: "通過ISO 45001:2018 職安衛生管理系統",
       },
@@ -31,7 +31,7 @@ const certificate = ref([
     text: "一般廢棄物、一般事業廢棄物及有害事業廢棄物清除業務。",
     content: [
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic04_b.jpg",
         thumbnail: "certificate_pic04.jpg",
         text: "甲級廢棄物清除許可證",
       },
@@ -42,28 +42,28 @@ const certificate = ref([
     text: "關於材料「消費後再生」之溯源認證，可有效證明再生料之塑膠廢棄物來源並受稽核單位監管。",
     content: [
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic05_b.jpg",
         thumbnail: "certificate_pic05.jpg",
         text: "全亞洲第一家獲得 德國「藍天使」EuCertPlast材料供應商認證",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic06_b.jpg",
         thumbnail: "certificate_pic06.jpg",
         text: "Global Recycled Standard (GRS) 再生料溯源認證",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
-        thumbnail: "certificate_pic07.jpg",
+        pic: "certificate_pic07_b.jpg",
+        thumbnail: "certificate_pic09.jpg",
         text: "TUV PCR 再生料溯源認證",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic08_b.jpg",
         thumbnail: "certificate_pic08.jpg",
         text: "PIDC PRM 塑膠材料認證（HDPE）",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
-        thumbnail: "certificate_pic09.jpg",
+        pic: "certificate_pic09_b.jpg",
+        thumbnail: "certificate_pic07.jpg",
         text: "PIDC PRM 塑膠材料認證（PP）",
       },
     ],
@@ -73,22 +73,22 @@ const certificate = ref([
     text: "依據ISO 14067計算產品碳排放量由第三方機構認證數值正確性，幫助企業消費者了解產品對氣候變遷造成的影響。",
     content: [
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic10_b.jpg",
         thumbnail: "certificate_pic10.jpg",
         text: "TUV碳足跡認證​<br />材料有效降低75%碳排放（HDPE）",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic11_b.jpg",
         thumbnail: "certificate_pic11.jpg",
         text: "TUV碳足跡認證​<br />材料有效降低75%碳排放（HDPE）",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic12_b.jpg",
         thumbnail: "certificate_pic12.jpg",
         text: "TUV碳足跡認證​<br />材料有效降低75%碳排放（PP）",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic13_b.jpg",
         thumbnail: "certificate_pic13.jpg",
         text: "TUV碳足跡認證​<br />材料有效降低75%碳排放（PP）",
       },
@@ -99,22 +99,22 @@ const certificate = ref([
     text: "產品應用範疇有關的各項認證，包含美國FDA再生料食品級認證、清真認證、綠色商品認證。",
     content: [
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic14_b.jpg",
         thumbnail: "certificate_pic14.jpg",
         text: "台灣首間美國FDA NOL 再生料供應商（r-HDPE）",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic15_b.jpg",
         thumbnail: "certificate_pic15.jpg",
-        text: "台灣首間美國FDA NOL 再生料供應商（r-HDPE）",
+        text: "台灣首間美國FDA NOL 再生料供應商（r-PP）",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic16_b.jpg",
         thumbnail: "certificate_pic16.jpg",
         text: "清真產品認證​​",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic17_b.jpg",
         thumbnail: "certificate_pic17.jpg",
         text: "綠色產品認證",
       },
@@ -125,22 +125,22 @@ const certificate = ref([
     text: "與安全性有關之毒物、重金屬、塑化劑、食品溶出等各項檢測報告。",
     content: [
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic18_b.jpg",
         thumbnail: "certificate_pic18.jpg",
         text: "REACH SVHC",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic19_b.jpg",
         thumbnail: "certificate_pic19.jpg",
         text: "RoHS​",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic20_b.jpg",
         thumbnail: "certificate_pic20.jpg",
         text: "CFR FDA 測試報告​",
       },
       {
-        pic: "http://placehold.jp/800x800.jpg",
+        pic: "certificate_pic21_b.jpg",
         thumbnail: "certificate_pic21.jpg",
         text: "EU No. 10 測試報告",
       },
@@ -151,9 +151,9 @@ const certificate = ref([
 const lightbox = ref(false);
 const lightbox_pic = ref(null);
 
-function open_pic(f, s) {
+function open_pic(data) {
     lightbox.value = true;
-    lightbox_pic.value = certificate.value[f].content[s].pic;
+    lightbox_pic.value = data;
 }
 
 const scrollToElement = (data) => {
@@ -167,9 +167,9 @@ onMounted(() => {
 </script>
 <template>
   <div>
-    <vheader :logo_color="true" />
+    <vheader :logo_color="true" :fixed="true" :scroll="true" />
 
-    <main id="about">
+    <main id="about" class="page">
       <div id="banner">
         <div id="banner_pic">
           <img loading="lazy" src="@/assets/images/about/banner03.jpg" alt="banner" />
@@ -178,8 +178,8 @@ onMounted(() => {
       <div id="banner_title">
         <h2 class="an fd">專業認證</h2>
         <h3 class="an fd">
-          <span><router-link to="/">大豐環保</router-link></span>
-          /關於大豐
+          <span><router-link class="color" to="/">大豐環保</router-link></span>
+          / 關於大豐
         </h3>
       </div>
       <div id="about_introduce">
@@ -293,7 +293,7 @@ onMounted(() => {
             </div>
             <div class="certificate_content an fu">
               <div class="item" v-for="(items, i) in item.content" :key="i">
-                <a href="javascript:void(0)" @click="open_pic(index, i)">
+                <a href="javascript:void(0)" @click="open_pic(require(`@/assets/images/about/${items.pic}`))">
                   <img
                     class="example-image"
                     :src="require(`@/assets/images/about/${items.thumbnail}`)"

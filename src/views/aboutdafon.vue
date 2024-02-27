@@ -17,10 +17,10 @@ const banner_text = ref([
 
 const banner_pic = ref([
   {
-    pic: "banner01.jpg",
+    pic: "aboutdafon_banner01.jpg",
   },
   {
-    pic: "banner01.jpg",
+    pic: "aboutdafon_banner02.jpg",
   },
 ]);
 
@@ -89,8 +89,8 @@ onMounted(() => {
       <div id="banner_title">
         <h2 class="an fd">公司文化</h2>
         <h3 class="an fd">
-          <span><router-link to="/">大豐環保</router-link></span>
-          /關於大豐
+          <span><router-link class="color" to="/">大豐環保</router-link></span>
+          / 關於大豐
         </h3>
       </div>
       <div id="introduce">
@@ -98,8 +98,8 @@ onMounted(() => {
           <div class="pic an fu">
             <img loading="lazy" class="" src="@/assets/images/about/pic01.jpg" alt="pic" />
           </div>
-          <div class="text an fu">
-            <h3 class="">多樣報廢服務</h3>
+          <div class="text an fl">
+            <h3 class="">資源全循環．永續新未來</h3>
             <h4 class="">零廢棄，全循環</h4>
             <p class="">
               大豐環保自2001年成立，以回收站起家，擁有專業研發團隊，從回收端、清運到再生，成功打造一條龍資源全循環。​
