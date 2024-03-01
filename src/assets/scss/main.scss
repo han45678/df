@@ -245,27 +245,31 @@ main {
                         &::after {
                             content: '';
                             width: 1px;
-                            height: 30%;
+                            height: 0%;
                             background-color: #282828;
                             position: absolute;
                             left: 0;
                             top: 0;
                             z-index: 1;
-                            animation: lineAnimation 3s linear infinite;
-
+                            transition: 0s;
+                            
                             @media only screen and (max-width: 1024px) {
-                                width: 25%;
+                                width: 0%;
                                 height: 1px;
                                 top: 100%;
                                 left: 0;
-                                animation: lineAnimation_m 3s linear infinite;
+                                
                             }
                         }
-                        &._10s{
-                            &::after {
-                                animation: lineAnimation 10s linear infinite;
-                                @media only screen and (max-width: 1024px) {
-                                    animation: lineAnimation_m 10s linear infinite;
+
+                        &.line_an_go{
+                            &::after{
+                                transition: 10s;
+                                height: 100%;
+                                // animation: lineAnimation 10s linear infinite;
+                                @media only screen and (max-width: 1024px){
+                                    width: 100%;
+                                    // animation: lineAnimation_m 10s linear infinite;
                                 }
                             }
                         }

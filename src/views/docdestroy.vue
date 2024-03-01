@@ -633,7 +633,7 @@ onBeforeUnmount(() => {
           <div class="item" :class="{ active: destroy_class == 0 }">
             <h3>服務品項：手機、USB隨身碟、硬碟、SSD、固態式硬碟</h3>
             <div class="process_content">
-              <div class="item_process">
+              <div class="item_process s">
                 <div class="pic">
                   <img
                     src="@/assets/images/company_serve/docdestroy/destroy_process_icon1_1.svg"
@@ -645,7 +645,7 @@ onBeforeUnmount(() => {
               <div class="arrow">
                 <span class="icon" />
               </div>
-              <div class="item_process">
+              <div class="item_process s">
                 <div class="pic">
                   <img
                     src="@/assets/images/company_serve/docdestroy/destroy_process_icon1_2.svg"
@@ -660,7 +660,7 @@ onBeforeUnmount(() => {
                   alt="arrow"
                 />
               </div>
-              <div class="item_process">
+              <div class="item_process s">
                 <div class="pic">
                   <img
                     src="@/assets/images/company_serve/docdestroy/destroy_process_icon1_3.svg"
@@ -675,7 +675,7 @@ onBeforeUnmount(() => {
                   alt="arrow"
                 />
               </div>
-              <div class="item_process">
+              <div class="item_process s">
                 <div class="pic">
                   <img
                     src="@/assets/images/company_serve/docdestroy/destroy_process_icon1_4.svg"
@@ -701,7 +701,10 @@ onBeforeUnmount(() => {
                 <p>掃描條碼紀錄</p>
               </div>
               <div class="arrow big">
-                <span class="icon" />
+                <img
+                  src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
+                  alt="arrow"
+                />
               </div>
               <div class="item_process">
                 <div class="big_pic">

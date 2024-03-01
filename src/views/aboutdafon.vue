@@ -3,8 +3,8 @@ import vheader from "@/components/header.vue";
 import vfooter from "@/components/footer.vue";
 import { ref, onMounted } from "vue";
 import $ from "jquery";
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick.js';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick.js";
 
 const banner_text = ref([
   {
@@ -35,6 +35,13 @@ function slick() {
     asNavFor: "#banner_text .text_content",
   });
 
+  $("#banner_pic").on("beforeChange", () => {
+    $("#banner_text .text_line").removeClass("line_an_go");
+    setTimeout(() => {
+      $("#banner_text .text_line").addClass("line_an_go");
+    }, 100);
+  });
+
   $("#banner_text .text_content").slick({
     dots: false,
     infinite: true,
@@ -52,7 +59,7 @@ onMounted(() => {
     if ($(".slick_an")) {
       $(".slick_an").addClass("slick_an_go");
     }
-  },300);
+  }, 300);
 });
 </script>
 <template>
@@ -72,8 +79,18 @@ onMounted(() => {
               />
             </div>
             <div class="link">
-              <a href="https://www.youtube.com/@DaFon2001"><img loading="lazy" src="@/assets/images/icon/play_icon.svg" alt="icon"/></a>
-              <a href="https://www.facebook.com/TaiwanDafon/"><img loading="lazy" src="@/assets/images/icon/fb_icon.svg" alt="icon"/></a>
+              <a href="https://www.youtube.com/@DaFon2001"
+                ><img
+                  loading="lazy"
+                  src="@/assets/images/icon/play_icon.svg"
+                  alt="icon"
+              /></a>
+              <a href="https://www.facebook.com/TaiwanDafon/"
+                ><img
+                  loading="lazy"
+                  src="@/assets/images/icon/fb_icon.svg"
+                  alt="icon"
+              /></a>
             </div>
           </div>
         </div>
@@ -96,7 +113,12 @@ onMounted(() => {
       <div id="introduce">
         <div id="introduce_content">
           <div class="pic an fu">
-            <img loading="lazy" class="" src="@/assets/images/about/pic01.jpg" alt="pic" />
+            <img
+              loading="lazy"
+              class=""
+              src="@/assets/images/about/pic01.jpg"
+              alt="pic"
+            />
           </div>
           <div class="text an fl">
             <h3 class="">資源全循環．永續新未來</h3>
@@ -109,7 +131,11 @@ onMounted(() => {
             </p>
           </div>
           <div class="cycle an fu">
-            <img loading="lazy" src="@/assets/images/about/pic02.png" alt="pic" />
+            <img
+              loading="lazy"
+              src="@/assets/images/about/pic02.png"
+              alt="pic"
+            />
           </div>
         </div>
       </div>
@@ -130,25 +156,41 @@ onMounted(() => {
                 </div> -->
           <div class="content m">
             <div class="item an fu">
-              <img loading="lazy" src="@/assets/images/about/cycle_pic01.png" alt="pic" />
+              <img
+                loading="lazy"
+                src="@/assets/images/about/cycle_pic01.png"
+                alt="pic"
+              />
               <p>
                 協助客戶建立最專業的資源分類知識、最具效率的回收通路系統，積極研發再利用、再製造技術，致力於<span>零廢棄資源全循環</span>。
               </p>
             </div>
             <div class="item an fu">
-              <img loading="lazy" src="@/assets/images/about/cycle_pic02.png" alt="pic" />
+              <img
+                loading="lazy"
+                src="@/assets/images/about/cycle_pic02.png"
+                alt="pic"
+              />
               <p>
                 成為最具品牌價值、最便利、最佳人均獲利的​<span>全球性資源循環管理公司</span>。
               </p>
             </div>
             <div class="item an fu">
-              <img loading="lazy" src="@/assets/images/about/cycle_pic03.png" alt="pic" />
+              <img
+                loading="lazy"
+                src="@/assets/images/about/cycle_pic03.png"
+                alt="pic"
+              />
               <p>
                 堅持打造具有​<span>正面積極</span>影響的企業，與環境永續共好。
               </p>
             </div>
             <div class="item an fu">
-              <img loading="lazy" src="@/assets/images/about/cycle_pic04.png" alt="pic" />
+              <img
+                loading="lazy"
+                src="@/assets/images/about/cycle_pic04.png"
+                alt="pic"
+              />
             </div>
           </div>
         </div>
@@ -165,7 +207,11 @@ onMounted(() => {
           </h3>
         </div>
         <div class="pic an fu">
-          <img loading="lazy" src="@/assets/images/about/develop_pic.jpg" alt="pic" />
+          <img
+            loading="lazy"
+            src="@/assets/images/about/develop_pic.jpg"
+            alt="pic"
+          />
         </div>
         <div class="content">
           <div class="text an fu">
@@ -212,7 +258,11 @@ onMounted(() => {
       <div id="more" class="an fu">
         <router-link to="/history">
           <span>重要紀事</span>
-          <img loading="lazy" src="@/assets/images/company_serve/more_arrow.svg" alt="arrow" />
+          <img
+            loading="lazy"
+            src="@/assets/images/company_serve/more_arrow.svg"
+            alt="arrow"
+          />
         </router-link>
       </div>
     </main>

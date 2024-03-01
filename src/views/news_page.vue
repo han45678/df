@@ -131,6 +131,11 @@ link();
                             <a href="javascript:void(0)">全部年份</a>
                             <ol>
                                 <li>
+                                    <a href="javascript:void(0)" @click="toYear('2024')">
+                                        2024
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="javascript:void(0)" @click="toYear('2023')">
                                         2023
                                     </a>

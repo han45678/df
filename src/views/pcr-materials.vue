@@ -11,7 +11,7 @@ const lightbox_pic = ref(null);
 
 function open_pic1(data) {
   lightbox.value = true;
-  lightbox_pic.value = data
+  lightbox_pic.value = data;
 }
 
 function open_pic2(data) {
@@ -64,13 +64,13 @@ const laboratory_info = ref([
   },
 ]);
 
-const laboratory_switch=()=>{
-  if(laboratory.value==laboratory_info.value.length-1){
+const laboratory_switch = () => {
+  if (laboratory.value == laboratory_info.value.length - 1) {
     laboratory.value = 0;
-  }else{
-    laboratory.value ++;
+  } else {
+    laboratory.value++;
   }
-}
+};
 
 const hdpe_info = ref([
   {
@@ -176,7 +176,7 @@ function slick() {
         breakpoint: 1024,
         settings: {
           // arrows: false,
-          speed: 600, 
+          speed: 600,
           slidesToShow: 2,
         },
       },
@@ -191,6 +191,13 @@ function slick() {
     speed: 1000, // 切換動畫速度（毫秒）
     autoplay: true,
     asNavFor: "#banner_text .text_content",
+  });
+
+  $("#banner_pic").on("beforeChange", () => {
+    $("#banner_text .text_line").removeClass("line_an_go");
+    setTimeout(() => {
+      $("#banner_text .text_line").addClass("line_an_go");
+    }, 100);
   });
 
   $("#banner_text .text_content").slick({
@@ -210,7 +217,7 @@ onMounted(() => {
     if ($(".slick_an")) {
       $(".slick_an").addClass("slick_an_go");
     }
-  },300);
+  }, 300);
 });
 </script>
 <template>
@@ -237,13 +244,26 @@ onMounted(() => {
                   objectives
                 </p>
               </div>
+              <div class="item">
+                <h3>實現客戶<br />永續發展目標</h3>
+                <p>
+                  Supporting customers to meet their product sustainability
+                  objectives
+                </p>
+              </div>
             </div>
             <div class="link">
               <a href="https://www.youtube.com/@DaFon2001"
-                ><img loading="lazy" src="@/assets/images/icon/play_icon.svg" alt="icon"
+                ><img
+                  loading="lazy"
+                  src="@/assets/images/icon/play_icon.svg"
+                  alt="icon"
               /></a>
               <a href="https://www.facebook.com/TaiwanDafon/"
-                ><img loading="lazy" src="@/assets/images/icon/fb_icon.svg" alt="icon"
+                ><img
+                  loading="lazy"
+                  src="@/assets/images/icon/fb_icon.svg"
+                  alt="icon"
               /></a>
             </div>
           </div>
@@ -255,6 +275,10 @@ onMounted(() => {
           />
           <img
             src="@/assets/images/company_serve/pcr/banner02.jpg"
+            alt="banner"
+          />
+          <img
+            src="@/assets/images/company_serve/pcr/banner03.jpg"
             alt="banner"
           />
         </div>
@@ -277,7 +301,7 @@ onMounted(() => {
               alt="pic"
             />
           </div>
-          <div class="text an fr">
+          <div class="text">
             <h3>PCR再生料品牌</h3>
             <p>
               大豐環保於2005年成立第一座塑膠容器再生處理廠，多年來在再生處理技術上不斷的升級，結合配方技術與加工經驗，如今已成為國內溯源認證最完備、品質最穩定、附加價值最高的PCR再生料品牌。
@@ -285,7 +309,7 @@ onMounted(() => {
             <p>
               除此之外企業亦十分重視全球暖化、淨零碳排等環保議題，除了持續優化製程減少能資源的消耗外，更將處理過程中產生的雜料餘料再製成物流載具，藉此實現零廢棄、全循環的目標。
             </p>
-            <p>
+            <p class="an fr">
               <a href="javascript:void(0)">
                 <img
                   src="@/assets/images/company_serve/pcr/introduce_link_icon.svg"
@@ -296,19 +320,22 @@ onMounted(() => {
             </p>
           </div>
           <div class="cycle an fu">
-            <img loading="lazy" src="@/assets/images/company_serve/pcr/pic02.png" alt="pic" />
+            <img
+              loading="lazy"
+              src="@/assets/images/company_serve/pcr/pic02.png"
+              alt="pic"
+            />
           </div>
         </div>
       </div>
-
 
       <div id="advantage_item" class="pcr">
         <div id="advantage_content">
           <div class="item an fu">
             <div class="no">01</div>
             <div class="icon">
-              <div 
-                class="lazy_img_pic lazy_img" 
+              <div
+                class="lazy_img_pic lazy_img"
                 :data-src="require(`@/assets/images/icon/enterprise_12.svg`)"
               />
               <!-- <img
@@ -331,8 +358,8 @@ onMounted(() => {
           <div class="item an fu">
             <div class="no">02</div>
             <div class="icon">
-              <div 
-                class="lazy_img_pic lazy_img" 
+              <div
+                class="lazy_img_pic lazy_img"
                 :data-src="require(`@/assets/images/icon/enterprise_9.svg`)"
               />
               <!-- <img
@@ -354,8 +381,8 @@ onMounted(() => {
           <div class="item an fu">
             <div class="no">03</div>
             <div class="icon">
-              <div 
-                class="lazy_img_pic lazy_img" 
+              <div
+                class="lazy_img_pic lazy_img"
                 :data-src="require(`@/assets/images/icon/enterprise_10.svg`)"
               />
               <!-- <img
@@ -378,8 +405,8 @@ onMounted(() => {
           <div class="item an fu">
             <div class="no">04</div>
             <div class="icon">
-              <div 
-                class="lazy_img_pic lazy_img" 
+              <div
+                class="lazy_img_pic lazy_img"
                 :data-src="require(`@/assets/images/icon/enterprise_11.svg`)"
               />
               <!-- <img
@@ -404,12 +431,21 @@ onMounted(() => {
         </div>
       </div>
 
-
       <div id="territory">
         <h3>TERRITORY</h3>
         <div class="map">
-          <img loading="lazy" class="m" src="@/assets/images/company_serve/pcr/map_m.jpg" alt="map" />
-          <img loading="lazy" class="pc" src="@/assets/images/company_serve/pcr/map.jpg" alt="map" />
+          <img
+            loading="lazy"
+            class="m"
+            src="@/assets/images/company_serve/pcr/map_m.jpg"
+            alt="map"
+          />
+          <img
+            loading="lazy"
+            class="pc"
+            src="@/assets/images/company_serve/pcr/map.jpg"
+            alt="map"
+          />
         </div>
         <!-- <div class="vidoe">
           <div class="vidoe_content">
@@ -4212,7 +4248,7 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
         </div>
       </div>
 
-      <div id="forest_bg" >
+      <div id="forest_bg">
         <!-- <img
           src="@/assets/images/company_serve/industrialwaste/tree.jpg"
           alt="tree"
@@ -4243,7 +4279,14 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
               :class="{ big: item.isBig }"
             >
               <div class="pic">
-                <a href="javascript:void(0)" @click="open_pic1(require(`@/assets/images/company_serve/pcr/${item.big_pic}`))">
+                <a
+                  href="javascript:void(0)"
+                  @click="
+                    open_pic1(
+                      require(`@/assets/images/company_serve/pcr/${item.big_pic}`)
+                    )
+                  "
+                >
                   <img
                     class="example-image"
                     :src="
@@ -4259,7 +4302,6 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
               </h5>
               <p v-if="item.isFoodGrade">食品級</p>
             </div>
-            
           </div>
 
           <div class="title">
@@ -4271,7 +4313,9 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
               />
             </h3>
             <p>
-              可應用於個人用品類、化粧品包材、瓶蓋、吹瓶、編織袋 <br/>Product applications could be personal-care products, cosmetic packaging, lids, bottles, woofer bags and so on.
+              可應用於個人用品類、化粧品包材、瓶蓋、吹瓶、編織袋 <br />Product
+              applications could be personal-care products, cosmetic packaging,
+              lids, bottles, woofer bags and so on.
             </p>
           </div>
           <div class="content">
@@ -4279,10 +4323,17 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
               v-for="(item, index) in hdpe_info2"
               :key="index"
               class="item"
-              :class="{ big:item.isBig , big_m_hide: item.isBig }"
+              :class="{ big: item.isBig, big_m_hide: item.isBig }"
             >
               <div class="pic">
-                <a href="javascript:void(0)" @click="open_pic2(require(`@/assets/images/company_serve/pcr/${item.big_pic}`))">
+                <a
+                  href="javascript:void(0)"
+                  @click="
+                    open_pic2(
+                      require(`@/assets/images/company_serve/pcr/${item.big_pic}`)
+                    )
+                  "
+                >
                   <img
                     class="example-image"
                     :src="
@@ -4301,19 +4352,42 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
           </div>
 
           <div id="consult">
-            <img src="@/assets/images/company_serve/pcr/consult_pic.jpg" alt="pic">
-              <p>我們產品以客製化服務，提供更多專業配料、配色與物性調配，產品種類多，詳細資訊歡迎與我們聯絡!</p>
+            <img
+              src="@/assets/images/company_serve/pcr/consult_pic.jpg"
+              alt="pic"
+            />
+            <p>
+              我們產品以客製化服務，提供更多專業配料、配色與物性調配，產品種類多，詳細資訊歡迎與我們聯絡!
+            </p>
 
-              <svg xmlns="http://www.w3.org/2000/svg" width="300" height="10.706" viewBox="0 0 300 10.706">
-                <g transform="translate(-1058 -8650.294)">
-                  <line x2="8" y2="9" transform="translate(1349 8651)" fill="none" stroke="#ccc" stroke-linecap="round" stroke-width="1"/>
-                  <line x2="300" transform="translate(1058 8660.5)" fill="none" stroke="#ccc" stroke-width="1"/>
-                </g>
-              </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="300"
+              height="10.706"
+              viewBox="0 0 300 10.706"
+            >
+              <g transform="translate(-1058 -8650.294)">
+                <line
+                  x2="8"
+                  y2="9"
+                  transform="translate(1349 8651)"
+                  fill="none"
+                  stroke="#ccc"
+                  stroke-linecap="round"
+                  stroke-width="1"
+                />
+                <line
+                  x2="300"
+                  transform="translate(1058 8660.5)"
+                  fill="none"
+                  stroke="#ccc"
+                  stroke-width="1"
+                />
+              </g>
+            </svg>
 
-              <router-link to="/contact">我想諮詢</router-link>
-            </div>
-
+            <router-link to="/contact">我想諮詢</router-link>
+          </div>
         </div>
       </div>
 
@@ -4521,7 +4595,9 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
               />
               <span class="text_content">
                 <span>請將您的需求寄信至</span>
-                <span>service@df-recycle.com<span class="m_hide">，</span></span>
+                <span
+                  >service@df-recycle.com<span class="m_hide">，</span></span
+                >
                 <span>將由專人為您回覆</span>
               </span>
               <p>Welcome to collaborate with us</p>
@@ -4533,7 +4609,11 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
       <div id="more" class="mb an fu">
         <router-link to="/pcr-materials">
           <span>再生循環產品</span>
-          <img loading="lazy" src="@/assets/images/company_serve/more_arrow.svg" alt="arrow" />
+          <img
+            loading="lazy"
+            src="@/assets/images/company_serve/more_arrow.svg"
+            alt="arrow"
+          />
         </router-link>
       </div>
     </main>
