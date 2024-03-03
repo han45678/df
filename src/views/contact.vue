@@ -1,4 +1,5 @@
 <script setup>
+import swal from 'sweetalert';
 import vheader from "@/components/header.vue";
 import vfooter from "@/components/footer.vue";
 import identify from "@/components/identify.vue";
@@ -102,28 +103,47 @@ function sendEmail() {
 }
 
 function send() {
-  if (
-    name.value &&
-    add.value &&
-    email.value &&
-    tel.value &&
-    inquiry_type_input !== "請選擇" &&
-    need.value
-  ) {
-    if (identifyCode.value === code.value) {
-      alert("表單送出");
-      post_form();
-      sendEmail();
-    } else {
-      alert("驗證碼錯誤");
+  if (name.value) {
+    if (add.value) {
+      if (email.value) {
+        if (tel.value) {
+          if (inquiry_type_input.value !== "請選擇") {
+            if (need.value) {
+              if (identifyCode.value.toLowerCase() === code.value.toLowerCase()){
+                swal("成功", "表單送出!", "success");
+                post_form();
+                sendEmail();
+              }else {
+                swal("錯誤", "驗證碼錯誤!", "error");
+              }
+            }else{
+              swal("錯誤", "需求說明未填寫!", "error");
+            }
+            
+          }else{
+            swal("錯誤", "詢問類型未選擇!", "error");
+          }
+          
+        }else{
+          swal("錯誤", "電話未填寫!", "error");
+        }
+        
+      }else{
+        swal("錯誤", "信箱未填寫!", "error");
+      }
+      
+    }else{
+      swal("錯誤", "地址未填寫!", "error");
     }
-  } else {
-    alert("表單內容不完整!");
+    
+  }else{
+    swal("錯誤", "姓名未填寫!", "error");
   }
 }
 
 onMounted(() => {
   generate();
+  
 });
 </script>
 <template>

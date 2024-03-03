@@ -63,46 +63,44 @@ function open_time(index){
   }
 }
 
-axios
-  .get("http://34.81.192.108:13000/api/v1/milestones/listyear")
-  .then((res) => {
-    year_info.value = res.data.result.milestonesMain;
-    axios
-      .get("http://34.81.192.108:13000/api/v1/milestones/list")
-      .then((r) => {
-        info.value = r.data.result.milestones;
 
-        year_info.value.forEach((item) => {
-          // Check if 'console' property exists, if not, create it as an empty array
-          if (!item.hasOwnProperty("console")) {
-            item.console = [];
-          }
 
-          info.value.forEach((items) => {
-            if (item.name == items.year) {
-              item.console.push(items);
-            }
-          });
-        });
+// http://34.81.192.108:13000/
 
-        year_info.value.forEach((data,i) => {
-          data.images = JSON.parse(data.images).other[0];
-          if(i<=3){
-            data.open = true
-          }
-        });
+async function fetchData() {
+  try {
+    const yearResponse = await axios.get("http://34.81.192.108:13000/api/v1/milestones/listyear");
+    const milestonesMain = yearResponse.data.result.milestonesMain;
 
-        data.value = year_info.value;
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+    const listResponse = await axios.get("http://34.81.192.108:13000/api/v1/milestones/list");
+    const milestones = listResponse.data.result.milestones;
+
+    milestonesMain.forEach((item) => {
+      if (!item.hasOwnProperty("console")) {
+        item.console = [];
+      }
+
+      milestones.forEach((items) => {
+        if (item.name === items.year) {
+          item.console.push(items);
+        }
       });
-  })
-  .catch((error) => {
+    });
+
+    milestonesMain.forEach((data, i) => {
+      data.images = JSON.parse(data.images).other[0];
+      if (i <= 3) {
+        data.open = true;
+      }
+    });
+
+    data.value = milestonesMain;
+  } catch (error) {
     console.error("Error:", error);
-  });
+  }
+}
 
-
+fetchData();
 
 onMounted(() => {
   

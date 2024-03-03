@@ -630,150 +630,155 @@ onBeforeUnmount(() => {
           <h2 v-if="destroy_class==2">破壞 <span>品項＆流程</span></h2>
         </div>
         <div class="content">
-          <div class="item" :class="{ active: destroy_class == 0 }">
-            <h3>服務品項：手機、USB隨身碟、硬碟、SSD、固態式硬碟</h3>
-            <div class="process_content">
-              <div class="item_process s">
-                <div class="pic">
+          <div class="content_wrapper">
+            <div class="item" :class="{ active: destroy_class == 0 }">
+              <h3>服務品項：手機、USB隨身碟、硬碟、SSD、固態式硬碟</h3>
+              <div class="process_content">
+                <div class="item_process s">
+                  <div class="pic">
+                    <img
+                      src="@/assets/images/company_serve/docdestroy/destroy_process_icon1_1.svg"
+                      alt="icon"
+                    />
+                  </div>
+                  <p>插入隨身碟/寄MAIL驅動程式/從雲端下載驅動程式</p>
+                </div>
+                <div class="arrow">
                   <img
-                    src="@/assets/images/company_serve/docdestroy/destroy_process_icon1_1.svg"
-                    alt="icon"
+                    src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
+                    alt="arrow"
                   />
                 </div>
-                <p>插入隨身碟/寄MAIL驅動程式/從雲端下載驅動程式</p>
-              </div>
-              <div class="arrow">
-                <span class="icon" />
-              </div>
-              <div class="item_process s">
-                <div class="pic">
+                <div class="item_process s">
+                  <div class="pic">
+                    <img
+                      src="@/assets/images/company_serve/docdestroy/destroy_process_icon1_2.svg"
+                      alt="icon"
+                    />
+                  </div>
+                  <p>掃描QR Code</p>
+                </div>
+                <div class="arrow">
                   <img
-                    src="@/assets/images/company_serve/docdestroy/destroy_process_icon1_2.svg"
-                    alt="icon"
+                    src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
+                    alt="arrow"
                   />
                 </div>
-                <p>掃描QR Code</p>
-              </div>
-              <div class="arrow">
-                <img
-                  src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
-                  alt="arrow"
-                />
-              </div>
-              <div class="item_process s">
-                <div class="pic">
+                <div class="item_process s">
+                  <div class="pic">
+                    <img
+                      src="@/assets/images/company_serve/docdestroy/destroy_process_icon1_3.svg"
+                      alt="icon"
+                    />
+                  </div>
+                  <p>進行抹除</p>
+                </div>
+                <div class="arrow">
                   <img
-                    src="@/assets/images/company_serve/docdestroy/destroy_process_icon1_3.svg"
-                    alt="icon"
+                    src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
+                    alt="arrow"
                   />
                 </div>
-                <p>進行抹除</p>
-              </div>
-              <div class="arrow">
-                <img
-                  src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
-                  alt="arrow"
-                />
-              </div>
-              <div class="item_process s">
-                <div class="pic">
-                  <img
-                    src="@/assets/images/company_serve/docdestroy/destroy_process_icon1_4.svg"
-                    alt="icon"
-                  />
+                <div class="item_process s">
+                  <div class="pic">
+                    <img
+                      src="@/assets/images/company_serve/docdestroy/destroy_process_icon1_4.svg"
+                      alt="icon"
+                    />
+                  </div>
+                  <p>完成抹除後產生證書</p>
                 </div>
-                <p>完成抹除後產生證書</p>
               </div>
             </div>
-          </div>
-          <div class="item" :class="{ active: destroy_class == 1 }">
-            <h3>
-              服務品項：HDD、2.5吋/3.5吋HDD硬碟、SSD固態硬碟、M.2磁碟、SATA
-            </h3>
-            <div class="process_content">
-              <div class="item_process">
-                <div class="big_pic">
+            <div class="item" :class="{ active: destroy_class == 1 }">
+              <h3>
+                服務品項：HDD、2.5吋/3.5吋HDD硬碟、SSD固態硬碟、M.2磁碟、SATA
+              </h3>
+              <div class="process_content">
+                <div class="item_process">
+                  <div class="big_pic">
+                    <img
+                      src="@/assets/images/company_serve/docdestroy/destroy_process_icon2_1.jpg"
+                      alt="icon"
+                    />
+                  </div>
+                  <p>掃描條碼紀錄</p>
+                </div>
+                <div class="arrow big">
                   <img
-                    src="@/assets/images/company_serve/docdestroy/destroy_process_icon2_1.jpg"
-                    alt="icon"
+                    src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
+                    alt="arrow"
                   />
                 </div>
-                <p>掃描條碼紀錄</p>
-              </div>
-              <div class="arrow big">
-                <img
-                  src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
-                  alt="arrow"
-                />
-              </div>
-              <div class="item_process">
-                <div class="big_pic">
+                <div class="item_process">
+                  <div class="big_pic">
+                    <img
+                      src="@/assets/images/company_serve/docdestroy/destroy_process_icon2_2.jpg"
+                      alt="icon"
+                    />
+                  </div>
+                  <p>一秒強力消磁</p>
+                  <span>
+                    符合ISO27001（資訊安全管理系統的國際規範）<br>
+                    磁場強度可達10,000 Oe以上，瞬間1秒銷（消）毀
+                  </span>
+                </div>
+                <div class="arrow big">
                   <img
-                    src="@/assets/images/company_serve/docdestroy/destroy_process_icon2_2.jpg"
-                    alt="icon"
+                    src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
+                    alt="arrow"
                   />
                 </div>
-                <p>一秒強力消磁</p>
-                <span>
-                  符合ISO27001（資訊安全管理系統的國際規範）<br>
-                  磁場強度可達10,000 Oe以上，瞬間1秒銷（消）毀
-                </span>
-              </div>
-              <div class="arrow big">
-                <img
-                  src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
-                  alt="arrow"
-                />
-              </div>
-              <div class="item_process">
-                <div class="big_pic">
-                  <img
-                    src="@/assets/images/company_serve/docdestroy/destroy_process_icon2_3.jpg"
-                    alt="icon"
-                  />
+                <div class="item_process">
+                  <div class="big_pic">
+                    <img
+                      src="@/assets/images/company_serve/docdestroy/destroy_process_icon2_3.jpg"
+                      alt="icon"
+                    />
+                  </div>
+                  <p>提供銷毀證書</p>
                 </div>
-                <p>提供銷毀證書</p>
               </div>
             </div>
-          </div>
-          <div class="item" :class="{ active: destroy_class == 2 }">
-            <h3>服務品項：HDD,2.5吋/3.5吋HDD硬碟、SSD固態硬碟、M.2磁碟、SATA</h3>
-            <div class="process_content">
-              <div class="item_process">
-                <div class="big_pic">
+            <div class="item" :class="{ active: destroy_class == 2 }">
+              <h3>服務品項：HDD,2.5吋/3.5吋HDD硬碟、SSD固態硬碟、M.2磁碟、SATA</h3>
+              <div class="process_content">
+                <div class="item_process">
+                  <div class="big_pic">
+                    <img
+                      src="@/assets/images/company_serve/docdestroy/destroy_process_icon3_1.jpg"
+                      alt="icon"
+                    />
+                  </div>
+                  <p>重力鑽孔加壓破壞</p>
+                </div>
+                <div class="arrow big">
+                  <span class="icon" />
+                </div>
+                <div class="item_process">
+                  <div class="big_pic">
+                    <img
+                      src="@/assets/images/company_serve/docdestroy/destroy_process_icon3_2.jpg"
+                      alt="icon"
+                    />
+                  </div>
+                  <p>V型對折下壓式破壞</p>
+                </div>
+                <div class="arrow big">
                   <img
-                    src="@/assets/images/company_serve/docdestroy/destroy_process_icon3_1.jpg"
-                    alt="icon"
+                    src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
+                    alt="arrow"
                   />
                 </div>
-                <p>重力鑽孔加壓破壞</p>
-              </div>
-              <div class="arrow big">
-                <span class="icon" />
-              </div>
-              <div class="item_process">
-                <div class="big_pic">
-                  <img
-                    src="@/assets/images/company_serve/docdestroy/destroy_process_icon3_2.jpg"
-                    alt="icon"
-                  />
+                <div class="item_process">
+                  <div class="big_pic">
+                    <img
+                      src="@/assets/images/company_serve/docdestroy/destroy_process_icon3_3.jpg"
+                      alt="icon"
+                    />
+                  </div>
+                  <p>提供銷毀證書</p>
                 </div>
-                <p>V型對折下壓式破壞</p>
-              </div>
-              <div class="arrow big">
-                <img
-                  src="@/assets/images/company_serve/docdestroy/destroy_arrow.svg"
-                  alt="arrow"
-                />
-              </div>
-              <div class="item_process">
-                <div class="big_pic">
-                  <img
-                    src="@/assets/images/company_serve/docdestroy/destroy_process_icon3_3.jpg"
-                    alt="icon"
-                  />
-                </div>
-                <p>提供銷毀證書</p>
               </div>
             </div>
           </div>

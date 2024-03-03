@@ -524,6 +524,11 @@ main {
     @import './pages/about';
 }
 
+
+.swal-footer{
+    text-align: center !important;
+}
+
 .slick-track {
     transition-delay: 3s;
     transition: fade 2000ms ease-out;
