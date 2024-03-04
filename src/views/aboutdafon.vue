@@ -34,7 +34,7 @@ function slick() {
     fade: true,
     arrows: false,
     speed: 1000, // 切換動畫速度（毫秒）
-    // autoplay: true,
+    autoplay: true,
     asNavFor: "#banner_text .text_content",
   });
 
