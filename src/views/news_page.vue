@@ -1,7 +1,7 @@
 <script setup>
 import vheader from "@/components/header.vue";
 import vfooter from "@/components/footer.vue";
-import { ref } from "vue";
+import { ref, watch, onMounted } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router";
 
@@ -18,15 +18,11 @@ const type_list = ref(null);
 
 function link() {
     id.value = location.href.split("news_page?")[1];
-
     axios
         .get(
             `http://34.81.192.108:13000/api/v1/news/getNewsMainList?currentPage=0&pageSize=9`
         )
         .then((r) => {
-            // console.log(r.data.result.rows);
-            // const [typeResponse, infoResponse] = responses;
-
             type_list.value = r.data.result.rows;
         })
         .catch((error) => {
@@ -93,9 +89,21 @@ function toYear(y) {
     router.push(`/news/0?year=${year.value}`);
     //   getInfo();
 }
+onMounted(() => {
+    link();
+});
 
-link();
+watch(
+    () => router.currentRoute.value.fullPath,
+    (newId, oldId) => {
+        console.log(newId, oldId);
+        if (newId !== oldId) {
+            link();
+        }
+    }
+);
 </script>
+
 <template>
     <div>
         <vheader />

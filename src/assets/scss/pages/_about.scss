@@ -1282,6 +1282,8 @@
                         a{
                             display: block;
                             position: relative;
+                            aspect-ratio: 1 / 1.39;
+                            overflow: hidden;
                             &::before{
                                 content: '+';
                                 width: 100%;
@@ -1530,7 +1532,7 @@
                             }
                         }
                     }
-                    &:hover{
+                    &.active{
                         ul{
                             transform: translateY(0);
                             opacity: 1;

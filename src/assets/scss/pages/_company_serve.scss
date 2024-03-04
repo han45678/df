@@ -554,10 +554,10 @@
                         padding-right: 50px;
                     }
 
-                    // @media only screen and (max-width: 768px) {
-                    //     padding-left: 50px;
-                    //     padding-right: 50px;
-                    // }
+                    @media only screen and (max-width: 768px) {
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
 
                     .pic {
                         width: 100%;
@@ -582,7 +582,7 @@
                         .no {
                             position: absolute;
                             z-index: 1;
-                            top: -5px;
+                            top: -40px;
                             left: -45px;
                             // left: 100px;
                             font-size: 80px;
@@ -5388,6 +5388,11 @@
                     font-size: 16px;
                     font-weight: 400;
                     line-height: 2;
+                    span{
+                        @media only screen and (max-width: 1024px){
+                            display: block;
+                        }
+                    }
                 }
             }
 

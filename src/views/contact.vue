@@ -30,6 +30,8 @@ const inquiry_type = ref([
   "其他",
 ]);
 
+const select_box = ref(false);
+
 const need = ref("");
 const code = ref("");
 
@@ -89,18 +91,18 @@ function post_form() {
     });
 }
 
-function sendEmail() {
-  window.Email.send({
-    SecureToken: "z3r4U2Xu+ut6",
-    To: "service@df-recycle.com",
-    From: `han<${email.value}>`,
-    Subject: "SMTP.JS測試",
-    Body: "SMTP.JS測試!!!",
-  }).then((message) => {
-    console.log("SMTP");
-    console.log(message);
-  });
-}
+// function sendEmail() {
+//   window.Email.send({
+//     SecureToken: "z3r4U2Xu+ut6",
+//     To: "service@df-recycle.com",
+//     From: `han<${email.value}>`,
+//     Subject: "SMTP.JS測試",
+//     Body: "SMTP.JS測試!!!",
+//   }).then((message) => {
+//     console.log("SMTP");
+//     console.log(message);
+//   });
+// }
 
 function send() {
   if (name.value) {
@@ -112,7 +114,7 @@ function send() {
               if (identifyCode.value.toLowerCase() === code.value.toLowerCase()){
                 swal("成功", "表單送出!", "success");
                 post_form();
-                sendEmail();
+                // sendEmail();
               }else {
                 swal("錯誤", "驗證碼錯誤!", "error");
               }
@@ -139,6 +141,10 @@ function send() {
   }else{
     swal("錯誤", "姓名未填寫!", "error");
   }
+}
+
+function test(){
+  console.log("123");
 }
 
 onMounted(() => {
@@ -335,13 +341,14 @@ onMounted(() => {
               詢問類型
               <span>*</span>
             </label>
-            <div class="select_box">
+            <div class="select_box" :class="{'active':select_box}">
+              <div style="position: absolute;width: 100%;height: 100%;top: 0;left: 0; z-index: 1;" @click="select_box = !select_box" ></div>
               <input type="text" disabled :value="inquiry_type_input" />
               <ul>
                 <li
                   v-for="(item, index) in inquiry_type"
                   :key="index"
-                  @click="inquiry_type_input = inquiry_type[index]"
+                  @click="inquiry_type_input = inquiry_type[index],select_box=false"
                 >
                   {{ item }}
                 </li>

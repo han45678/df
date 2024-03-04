@@ -22,6 +22,9 @@ const banner_pic = ref([
   {
     pic: "aboutdafon_banner02.jpg",
   },
+  {
+    pic: "aboutdafon_banner03.jpg",
+  }
 ]);
 
 function slick() {

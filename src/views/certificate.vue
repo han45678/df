@@ -52,18 +52,18 @@ const certificate = ref([
         text: "Global Recycled Standard (GRS) 再生料溯源認證",
       },
       {
-        pic: "certificate_pic07_b.jpg",
-        thumbnail: "certificate_pic09.jpg",
+        pic: "certificate_pic09_b.jpg",
+        thumbnail: "certificate_pic07.jpg",
         text: "TUV PCR 再生料溯源認證",
       },
       {
-        pic: "certificate_pic08_b.jpg",
+        pic: "certificate_pic07_b.jpg",
         thumbnail: "certificate_pic08.jpg",
         text: "PIDC PRM 塑膠材料認證（HDPE）",
       },
       {
-        pic: "certificate_pic09_b.jpg",
-        thumbnail: "certificate_pic07.jpg",
+        pic: "certificate_pic08_b.jpg",
+        thumbnail: "certificate_pic09.jpg",
         text: "PIDC PRM 塑膠材料認證（PP）",
       },
     ],
@@ -160,6 +160,11 @@ const scrollToElement = (data) => {
   let element = document.querySelector(`#${data}`);
   element.scrollIntoView({ behavior: "smooth" });
 };
+
+function closeBtn(){
+  lightbox.value=false;
+  lightbox_pic.value = '';
+}
 
 onMounted(() => {
   // lightbox_()
@@ -319,7 +324,7 @@ onMounted(() => {
     <!-- 燈箱 -->
     <div id="lightbox" :class="{active:lightbox}">
       <div id="lightbox_wrapper">
-        <button id="closeBtn" @click="lightbox=false" />
+        <button id="closeBtn" @click="closeBtn()" />
         <img loading="lazy" :src="lightbox_pic" alt="pic" />
       </div>
     </div>

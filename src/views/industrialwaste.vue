@@ -12,6 +12,7 @@ import { useStore } from "vuex";
 
 const router = useRouter();
 const store = useStore();
+const detail_no = null;
 
 const serve = ref([
   {
@@ -69,6 +70,7 @@ function initializeSlick() {
       slidesToShow: 3,
       slidesToScroll: 1,
       autoplay: true,
+      centerMode: true,
       responsive: [
         {
           breakpoint: 1279,
@@ -89,8 +91,13 @@ function initializeSlick() {
     slickInitialized.value = true;
   }
 
-  $("#serve_content_top").on("beforeChange", () => {
-    detail_open.value = false;
+  $('#serve_content_top').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+    // console.log(currentSlide,nextSlide);
+    if(nextSlide == 3){
+      detail_open.value = true;
+    }else{
+      detail_open.value = false;
+    }
   });
 }
 
@@ -113,6 +120,16 @@ function handleWindowSize() {
   } else {
     initializeSlick();
   }
+}
+
+function detail_btn(data){
+
+  if(data==4){
+    detail_open.value = true;
+  }else{
+    detail_open.value = false;
+  }
+
 }
 
 onMounted(() => {
@@ -250,7 +267,7 @@ onMounted(() => {
               class="item"
               v-for="(item, index) in serve"
               :key="index"
-              @click="detail_open = true"
+              @click="detail_btn(index+1)"
             >
               <div class="pic">
                 <div class="no">{{ item.no }}</div>
