@@ -118,7 +118,7 @@ onMounted(() => {});
                 path === 'docdestroy' ||
                 path === 'wood',
             }"
-            to="/aboutdafon"
+            to="/enterprise"
             >企業清運服務</router-link
           >
           <button

@@ -301,30 +301,35 @@ onMounted(() => {
               alt="pic"
             />
           </div>
+
           <div class="text an fl">
-            <h3>PCR再生料品牌</h3>
-            <p>
-              大豐環保於2005年成立第一座塑膠容器再生處理廠，多年來在再生處理技術上不斷的升級，結合配方技術與加工經驗，如今已成為國內溯源認證最完備、品質最穩定、附加價值最高的PCR再生料品牌。
-            </p>
-            <p>
-              除此之外企業亦十分重視全球暖化、淨零碳排等環保議題，除了持續優化製程減少能資源的消耗外，更將處理過程中產生的雜料餘料再製成物流載具，藉此實現零廢棄、全循環的目標。
-            </p>
-            <p>
-              <a href="javascript:void(0)">
-                <img
-                  src="@/assets/images/company_serve/pcr/introduce_link_icon.svg"
-                  alt="pic"
-                />
-                <span>溯源認證最完備 + 品質最穩定 + 附加價值最高</span>
-              </a>
-            </p>
-          </div>
-          <div class="cycle an fu">
-            <img
-              loading="lazy"
-              src="@/assets/images/company_serve/pcr/pic02.png"
-              alt="pic"
-            />
+            
+            <div class="text_content">
+              <h3>PCR再生料品牌</h3>
+              <p>
+                大豐環保於2005年成立第一座塑膠容器再生處理廠，多年來在再生處理技術上不斷的升級，結合配方技術與加工經驗，如今已成為國內溯源認證最完備、品質最穩定、附加價值最高的PCR再生料品牌。
+              </p>
+              <p>
+                除此之外企業亦十分重視全球暖化、淨零碳排等環保議題，除了持續優化製程減少能資源的消耗外，更將處理過程中產生的雜料餘料再製成物流載具，藉此實現零廢棄、全循環的目標。
+              </p>
+              <p>
+                <a href="javascript:void(0)">
+                  <img
+                    src="@/assets/images/company_serve/pcr/introduce_link_icon.svg"
+                    alt="pic"
+                  />
+                  <span>溯源認證最完備 + 品質最穩定 + 附加價值最高</span>
+                </a>
+              </p>
+            </div>
+
+            <div class="cycle">
+              <img
+                loading="lazy"
+                src="@/assets/images/company_serve/pcr/pic02.png"
+                alt="pic"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -4267,8 +4272,11 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
               />
             </h3>
             <p>
-              可應用於瓶器、軟管、薄板、膜類 <span>Product applications could be
-              bottles、tubes、sheets、films and so on.</span>
+              可應用於瓶器、軟管、薄板、膜類
+              <span
+                >Product applications could be bottles、tubes、sheets、films and
+                so on.</span
+              >
             </p>
           </div>
           <div class="content">
@@ -4313,9 +4321,11 @@ v1.94h3.61v1.38h-3.61v3.48L51.46,49.01z"
               />
             </h3>
             <p>
-              可應用於個人用品類、化粧品包材、瓶蓋、吹瓶、編織袋 <span>Product
-              applications could be personal-care products, cosmetic packaging,
-              lids, bottles, woofer bags and so on.</span>
+              可應用於個人用品類、化粧品包材、瓶蓋、吹瓶、編織袋
+              <span
+                >Product applications could be personal-care products, cosmetic
+                packaging, lids, bottles, woofer bags and so on.</span
+              >
             </p>
           </div>
           <div class="content">

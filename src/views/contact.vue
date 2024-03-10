@@ -1,5 +1,5 @@
 <script setup>
-import swal from 'sweetalert';
+import swal from "sweetalert";
 import vheader from "@/components/header.vue";
 import vfooter from "@/components/footer.vue";
 import identify from "@/components/identify.vue";
@@ -84,6 +84,8 @@ function post_form() {
       code.value = "";
 
       generate();
+
+      swal("成功", "表單送出!", "success");
     })
     .catch((error) => {
       // 請求失敗處理
@@ -105,51 +107,55 @@ function post_form() {
 // }
 
 function send() {
+  let emailRule =
+    /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+
   if (name.value) {
     if (add.value) {
       if (email.value) {
-        if (tel.value) {
-          if (inquiry_type_input.value !== "請選擇") {
-            if (need.value) {
-              if (identifyCode.value.toLowerCase() === code.value.toLowerCase()){
-                swal("成功", "表單送出!", "success");
-                post_form();
-                // sendEmail();
-              }else {
-                swal("錯誤", "驗證碼錯誤!", "error");
+        if (email.value.search(emailRule) != -1) {
+          if (tel.value) {
+            if (inquiry_type_input.value !== "請選擇") {
+              if (need.value) {
+                if (
+                  identifyCode.value.toLowerCase() === code.value.toLowerCase()
+                ) {
+                  swal({
+                    title: "傳送中",
+                    text: "請稍後......",
+                    icon: "info",
+                    buttons: false, // Disable the close button
+                    closeOnClickOutside: false, // Prevent closing by clicking outside the swal
+                  });
+                  post_form();
+                } else {
+                  swal("錯誤", "驗證碼錯誤!", "error");
+                }
+              } else {
+                swal("錯誤", "需求說明未填寫!", "error");
               }
-            }else{
-              swal("錯誤", "需求說明未填寫!", "error");
+            } else {
+              swal("錯誤", "詢問類型未選擇!", "error");
             }
-            
-          }else{
-            swal("錯誤", "詢問類型未選擇!", "error");
+          } else {
+            swal("錯誤", "電話未填寫!", "error");
           }
-          
-        }else{
-          swal("錯誤", "電話未填寫!", "error");
+        } else {
+          swal("錯誤", "信箱格式錯誤!", "error");
         }
-        
-      }else{
+      } else {
         swal("錯誤", "信箱未填寫!", "error");
       }
-      
-    }else{
+    } else {
       swal("錯誤", "地址未填寫!", "error");
     }
-    
-  }else{
+  } else {
     swal("錯誤", "姓名未填寫!", "error");
   }
 }
 
-function test(){
-  console.log("123");
-}
-
 onMounted(() => {
   generate();
-  
 });
 </script>
 <template>
@@ -341,14 +347,27 @@ onMounted(() => {
               詢問類型
               <span>*</span>
             </label>
-            <div class="select_box" :class="{'active':select_box}">
-              <div style="position: absolute;width: 100%;height: 100%;top: 0;left: 0; z-index: 1;" @click="select_box = !select_box" ></div>
+            <div class="select_box" :class="{ active: select_box }">
+              <div
+                style="
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  top: 0;
+                  left: 0;
+                  z-index: 1;
+                "
+                @click="select_box = !select_box"
+              ></div>
               <input type="text" disabled :value="inquiry_type_input" />
               <ul>
                 <li
                   v-for="(item, index) in inquiry_type"
                   :key="index"
-                  @click="inquiry_type_input = inquiry_type[index],select_box=false"
+                  @click="
+                    (inquiry_type_input = inquiry_type[index]),
+                      (select_box = false)
+                  "
                 >
                   {{ item }}
                 </li>

@@ -19,6 +19,9 @@ const year = ref(window.location.href.split("?year=")[1]);
 
 // console.log("分類", type.value, "年分", year.value);
 
+const page_s = ref(1);
+const page_e = ref(3);
+
 //目前第幾頁
 const no = ref(0);
 
@@ -49,17 +52,23 @@ const goToPage = (pageNumber) => {
 function prevPageMax() {
   load.value = false;
   no.value = 0;
+  page_s.value = no.value + 1;
+  page_e.value = no.value + 3;
   getInfo();
 }
 
 function prevPage() {
   load.value = false;
+  page_s.value--;
+  page_e.value--;
   no.value--;
   getInfo();
 }
 
 function nextPage() {
   load.value = false;
+  page_s.value++;
+  page_e.value++;
   no.value++;
   getInfo();
 }
@@ -67,6 +76,8 @@ function nextPage() {
 function nextPageMax() {
   load.value = false;
   no.value = Math.ceil(info_total.value / info_page.value) - 1;
+  page_s.value = no.value - 1;
+  page_e.value = no.value + 1;
   getInfo();
 }
 
@@ -280,7 +291,7 @@ getInfo();
           </li>
 
           <!-- ▼所有頁碼▼ -->
-          <li v-for="pageNumber in totalPages" :key="pageNumber">
+          <li v-for="pageNumber in totalPages" :key="pageNumber" v-show="pageNumber>=page_s&&pageNumber<=page_e">
             <a
               :class="{ active: pageNumber - 1 === no }"
               @click="goToPage(pageNumber)"

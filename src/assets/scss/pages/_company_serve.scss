@@ -4794,24 +4794,32 @@
             }
 
             .text {
-                width: calc(100% - 660px);
+                width: calc(100% - 360px);
+                display: flex;
                 box-sizing: border-box;
-                padding-left: 70px;
-                padding-right: 70px;
-
-                @media only screen and (max-width: 1365px) {
-                    width: calc(100% - 660px);
-                    padding-left: 35px;
-                    padding-right: 35px;
-                }
-
-                @media only screen and (max-width: 1024px) {
-                    padding-top: 40px;
-                    padding-left: 0;
-                    padding-right: 0;
-                    padding-bottom: 30px;
+                flex-wrap: wrap;
+                @media only screen and (max-width: 1024px){
                     width: 100%;
                 }
+                .text_content{
+                    padding-left: 70px;
+                    padding-right: 70px;
+                    width: calc(100% - 300px);
+                    @media only screen and (max-width: 1365px) {
+                        width: calc(100% - 300px);
+                        padding-left: 35px;
+                        padding-right: 35px;
+                    }
+    
+                    @media only screen and (max-width: 1024px) {
+                        padding-top: 40px;
+                        padding-left: 0;
+                        padding-right: 0;
+                        padding-bottom: 30px;
+                        width: 100%;
+                    }
+                }
+                
 
                 h3 {
                     font-size: 42px;
