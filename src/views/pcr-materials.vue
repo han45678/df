@@ -188,6 +188,7 @@ function slick() {
     infinite: true,
     fade: true,
     arrows: false,
+    autoplaySpeed: 10000,
     speed: 1000, // 切換動畫速度（毫秒）
     autoplay: true,
     asNavFor: "#banner_text .text_content",
@@ -205,6 +206,7 @@ function slick() {
     infinite: true,
     fade: true,
     arrows: false,
+    autoplaySpeed: 10000,
     speed: 1000, // 切換動畫速度（毫秒）
     autoplay: true,
     asNavFor: "#banner_pic",
@@ -214,10 +216,11 @@ function slick() {
 onMounted(() => {
   slick();
   setTimeout(() => {
-    if ($(".slick_an")) {
-      $(".slick_an").addClass("slick_an_go");
-    }
-  }, 300);
+        $("#banner_text .text_line").addClass("line_an_go");
+        if ($(".slick_an")) {
+            $(".slick_an").addClass("slick_an_go");
+        }
+    }, 300);
 });
 </script>
 <template>
@@ -228,7 +231,7 @@ onMounted(() => {
       <div id="banner" class="big">
         <div id="banner_text">
           <div class="text">
-            <div class="text_line" />
+            <div class="text_line _10s" />
             <div class="text_content slick_an">
               <div class="item">
                 <h3>實現客戶<br />永續發展目標</h3>

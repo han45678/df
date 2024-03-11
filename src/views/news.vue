@@ -43,9 +43,9 @@ const totalPages = computed(() =>
 const goToPage = (pageNumber) => {
   load.value = false;
   console.log(`Navigating to page ${pageNumber - 1}`);
+  console.log(pageNumber);
   currentPage.value = pageNumber - 1;
   no.value = currentPage.value;
-
   getInfo();
 };
 

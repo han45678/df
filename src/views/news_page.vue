@@ -30,35 +30,41 @@ function link() {
         });
 
     axios
+        //http://34.81.192.108:13000/api/v1/news/1?type=2
         .get(`http://34.81.192.108:13000/api/v1/news/${id.value}`)
         .then((r) => {
-            info.value = r.data.result;
-            info.value.images = JSON.parse(info.value.images);
-
-            if (info.value.previousid) {
-                axios
-                    .get(
-                        `http://34.81.192.108:13000/api/v1/news/${info.value.previousid}`
-                    )
-                    .then((prev) => {
-                        prev_title.value = prev.data.result.title;
-                    })
-                    .catch((error) => {
-                        console.error("Error:", error);
-                    });
-            }
-
-            if (info.value.nextid) {
-                axios
-                    .get(`http://34.81.192.108:13000/api/v1/news/${info.value.nextid}`)
-                    .then((next) => {
-                        next_title.value = next.data.result.title;
-                    })
-                    .catch((error) => {
-                        console.error("Error:", error);
-                    });
-            }
-            load.value = true;
+            axios
+                .get(`http://34.81.192.108:13000/api/v1/news/${id.value}?type=${r.data.result.type}`)
+                .then((res) => {
+                    info.value = res.data.result;
+                    info.value.images = JSON.parse(info.value.images);
+                    if (info.value.previousid) {
+                        axios
+                            .get(
+                                `http://34.81.192.108:13000/api/v1/news/${info.value.previousid}`
+                            )
+                            .then((prev) => {
+                                prev_title.value = prev.data.result.title;
+                            })
+                            .catch((error) => {
+                                console.error("Error:", error);
+                            });
+                    }
+                    if (info.value.nextid) {
+                        axios
+                            .get(`http://34.81.192.108:13000/api/v1/news/${info.value.nextid}`)
+                            .then((next) => {
+                                next_title.value = next.data.result.title;
+                            })
+                            .catch((error) => {
+                                console.error("Error:", error);
+                            });
+                    }
+                    load.value = true;
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
         })
         .catch((error) => {
             console.error("Error:", error);
