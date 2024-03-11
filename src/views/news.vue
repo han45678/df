@@ -59,16 +59,20 @@ function prevPageMax() {
 
 function prevPage() {
   load.value = false;
-  page_s.value--;
-  page_e.value--;
+  if(page_e.value > 3){
+    page_s.value--;
+    page_e.value--;
+  }
   no.value--;
   getInfo();
 }
 
 function nextPage() {
   load.value = false;
-  page_s.value++;
-  page_e.value++;
+  if(page_e.value !== totalPages.value){
+    page_s.value++;
+    page_e.value++;
+  }
   no.value++;
   getInfo();
 }
@@ -272,7 +276,15 @@ getInfo();
       <div id="page_no" class="an fu">
         <ul>
           <!-- 第一頁 -->
-          <li :class="{ hide: no == 0 }">
+          <li v-if="no == 0" class="hide">
+            <a href="javascript:void(0)"
+              ><img
+                loading="lazy"
+                src="@/assets/images/icon/page_no_prev__moret.svg"
+                alt="icon"
+            /></a>
+          </li>
+          <li v-else>
             <a @click="prevPageMax" href="javascript:void(0)"
               ><img
                 loading="lazy"
@@ -281,7 +293,15 @@ getInfo();
             /></a>
           </li>
           <!-- 上一頁 -->
-          <li :class="{ hide: no == 0 }">
+          <li v-if="no == 0" class="hide">
+            <a href="javascript:void(0)">
+              <img
+                loading="lazy"
+                src="@/assets/images/icon/page_no_prev.svg"
+                alt="icon"
+            /></a>
+          </li>
+          <li v-else >
             <a @click="prevPage" href="javascript:void(0)">
               <img
                 loading="lazy"
@@ -302,7 +322,16 @@ getInfo();
           <!-- ▲所有頁碼▲ -->
 
           <!-- 下一頁 -->
-          <li :class="{ hide: no == totalPages - 1 }">
+          <li v-if="no == totalPages - 1" class="hide">
+            <a href="javascript:void(0)">
+              <img
+                loading="lazy"
+                src="@/assets/images/icon/page_no_next.svg"
+                alt="icon"
+              />
+            </a>
+          </li>
+          <li v-else>
             <a @click="nextPage" href="javascript:void(0)">
               <img
                 loading="lazy"
@@ -313,7 +342,16 @@ getInfo();
           </li>
 
           <!-- 最後一頁 -->
-          <li :class="{ hide: no == totalPages - 1 }">
+          <li v-if="no == totalPages - 1" class="hide">
+            <a href="javascript:void(0)">
+              <img
+                loading="lazy"
+                src="@/assets/images/icon/page_no_next_moret.svg"
+                alt="icon"
+              />
+            </a>
+          </li>
+          <li v-else>
             <a @click="nextPageMax" href="javascript:void(0)">
               <img
                 loading="lazy"
@@ -322,6 +360,7 @@ getInfo();
               />
             </a>
           </li>
+          
         </ul>
       </div>
     </main>
