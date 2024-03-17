@@ -168,16 +168,18 @@ function slick() {
     autoplaySpeed: 0, // 設定輪播間隔時間（毫秒）
     dots: false, // 顯示小圓點導航
     infinite: true, // 循環輪播
-    speed: 5000, // 切換動畫速度（毫秒）
-    slidesToShow: 6, // 一次顯示的輪播項目數量
-    slidesToScroll: 1, // 一次切換的輪播項目數量
+    speed: 10000, // 切換動畫速度（毫秒）
+    // slidesToShow: 1, // 一次顯示的輪播項目數量
+    // slidesToScroll: 1, // 一次切換的輪播項目數量
+    variableWidth: true,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          // arrows: false,
+          variableWidth: false,
           speed: 600,
           slidesToShow: 2,
+          slidesToScroll: 1
         },
       },
     ],
@@ -188,8 +190,8 @@ function slick() {
     infinite: true,
     fade: true,
     arrows: false,
-    autoplaySpeed: 10000,
-    speed: 1000, // 切換動畫速度（毫秒）
+    autoplaySpeed: 5000,
+    // speed: 1000, // 切換動畫速度（毫秒）
     autoplay: true,
     asNavFor: "#banner_text .text_content",
   });
@@ -206,8 +208,8 @@ function slick() {
     infinite: true,
     fade: true,
     arrows: false,
-    autoplaySpeed: 10000,
-    speed: 1000, // 切換動畫速度（毫秒）
+    autoplaySpeed: 5000,
+    // speed: 1000, // 切換動畫速度（毫秒）
     autoplay: true,
     asNavFor: "#banner_pic",
   });
@@ -236,8 +238,7 @@ onMounted(() => {
               <div class="item">
                 <h3>實現客戶<br />永續發展目標</h3>
                 <p>
-                  Supporting customers to meet their product sustainability
-                  objectives
+                  Supporting Customers to Meet Their Product Sustainability Objectives
                 </p>
               </div>
               <div class="item">
@@ -290,7 +291,7 @@ onMounted(() => {
         <h2 class="an fd">再生塑料</h2>
         <h3 class="an fd">
           <span>
-            <router-link class="color" to="/">大豐環保</router-link>
+            <router-link class="color" to="/">首頁</router-link>
           </span>
           / 企業服務
         </h3>

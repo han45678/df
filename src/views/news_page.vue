@@ -123,7 +123,7 @@ watch(
             <div id="banner_title">
                 <h2 class="an fd">最新消息</h2>
                 <h3 class="an fd">
-                    <span><router-link class="color" to="/">大豐環保</router-link></span>
+                    <span><router-link class="color" to="/">首頁</router-link></span>
                     / 最新消息
                 </h3>
             </div>

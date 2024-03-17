@@ -435,8 +435,8 @@ onMounted(async () => {
       <div id="banner_title">
         <h2 class="an fd">服務據點</h2>
         <h3 class="an fd">
-          <span><router-link class="color" to="/">大豐環保</router-link></span>
-          / 服務據點
+          <span><router-link class="color" to="/">首頁</router-link></span>
+          / 關於大豐
         </h3>
       </div>
       <div id="locations_content">

@@ -14,7 +14,7 @@ export function animateItem(item, callback) {
       clearInterval(pp);
       callback();
     }
-  }, 60);
+  }, 20);
 }
 
 export function animateItems(index = 0) {
@@ -35,7 +35,7 @@ export function animateItems(index = 0) {
       animateItem(items[index], () => {
         animateItems(index + 1);
       });
-    }, 600)
+    }, 400)
 
   } else {
     document.querySelector("#process_line").style.setProperty("--line", "100%");

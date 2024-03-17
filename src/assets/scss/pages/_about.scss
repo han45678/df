@@ -765,47 +765,48 @@
 
                     .achieve_pic {
                         position: relative;
+                        overflow: hidden;
+                        // &::before {
+                        //     content: "";
+                        //     width: 100%;
+                        //     height: 100%;
+                        //     position: absolute;
+                        //     top: 0;
+                        //     left: 0;
+                        //     right: 0;
+                        //     bottom: 0;
+                        //     background-color: rgba(0, 73, 166, 0.9);
+                        //     transition: 0.6s;
+                        //     opacity: 1;
+                        //     @media only screen and (max-width: 1024px){
+                        //         display: none;
+                        //     }
+                        // }
 
-                        &::before {
-                            content: "";
-                            width: 100%;
-                            height: 100%;
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            right: 0;
-                            bottom: 0;
-                            background-color: rgba(0, 73, 166, 0.9);
-                            transition: 0.6s;
-                            opacity: 1;
-                            @media only screen and (max-width: 1024px){
-                                display: none;
-                            }
-                        }
-
-                        &::after {
-                            content: "+";
-                            position: absolute;
-                            width: 22px;
-                            height: 22px;
-                            top: 0;
-                            left: 0;
-                            right: 0;
-                            bottom: 0;
-                            margin: auto;
-                            opacity: 0;
-                            font-weight: 200;
-                            font-size: 48px;
-                            color: #fff;
-                            transition: 0.6s;
-                            opacity: 1;
-                            @media only screen and (max-width: 1024px){
-                                display: none;
-                            }
-                        }
+                        // &::after {
+                        //     content: "+";
+                        //     position: absolute;
+                        //     width: 22px;
+                        //     height: 22px;
+                        //     top: 0;
+                        //     left: 0;
+                        //     right: 0;
+                        //     bottom: 0;
+                        //     margin: auto;
+                        //     opacity: 0;
+                        //     font-weight: 200;
+                        //     font-size: 48px;
+                        //     color: #fff;
+                        //     transition: 0.6s;
+                        //     opacity: 1;
+                        //     @media only screen and (max-width: 1024px){
+                        //         display: none;
+                        //     }
+                        // }
 
                         img {
                             width: 100%;
+                            transition: 0.6s;
                         }
                     }
 
@@ -823,9 +824,13 @@
                     &:hover {
                         .achieve_pic {
 
-                            &::before,
-                            &::after {
-                                opacity: 0;
+                            // &::before,
+                            // &::after {
+                            //     opacity: 0;
+                            // }
+
+                            img{
+                                transform: scale(1.15);
                             }
                         }
                     }

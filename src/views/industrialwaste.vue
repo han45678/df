@@ -265,6 +265,7 @@ onMounted(() => {
           <div id="serve_content_top" class="an fu">
             <div
               class="item"
+              :class="{more:index == 3}"
               v-for="(item, index) in serve"
               :key="index"
               @click="detail_btn(index+1)"
@@ -300,19 +301,18 @@ onMounted(() => {
                     <li>
                       <span class="title">1、廢五金類：</span>
                       <span class="content">廢鋼、廢鐵、廢不鏽鋼、廢電線、含銅廢料(銅箔、銅球、銅塊、青銅…)、廢鐵屑、特殊合金等</span>
-                      
                     </li>
                     <li>
                       <span class="title">2、廢塑膠回收：</span>
-                      <span class="content">PE．PP聚乙烯(PE)、高分子聚乙烯(UPE)、聚丙烯(PP)、MC尼龍、PU．ABS、聚氨酯制品PU、ABS樹脂、聚縮醛(POM)、PVC、聚氯乙烯(CPVC)。</span>
+                      <span class="content">聚乙烯(PE)、超高分子量聚乙烯(UPE)、聚丙烯(PP)、聚氨酯製品(PU)、聚縮醛(POM)、聚氯乙烯(PVC) 氯化聚氯乙烯塑膠(CPVC) 、MC尼龍、ABS樹脂。</span>  
                     </li>
                     <li>
-                      <span class="title">3、廢紙類：</span>
-                      <span class="content">電子廠墊襯白紙、廢紙箱、廢紙切邊料、淋膜紙、紙箱、報表紙等，(大豐另有機密文件銷毀服務)。</span>
+                      <span class="title"> 3、廢紙類：</span>
+                      <span class="content">電子廠墊襯白紙、廢紙箱、廢紙切邊料、淋膜紙、紙箱、報表紙等。 (括號及文字刪除)</span>
                     </li>
                     <li>
                       <span class="title">4、貴金屬類：</span>
-                      <span class="content">各類含金廢料(導線架、金板、金框…)、含銀廢料(銅鍍銀、鎳鍍銀、銀膠、廢銀液..)、含鈀廢料、含銦廢料、各式靶材回收等。</span>
+                      <span class="content">各類含金廢料(導線架、金板、金框…)、含銀廢料(銅鍍銀、鎳鍍銀、銀膠、廢銀液..)、含鈀廢料、含銦廢料、各式靶材回收等。</span> 
                     </li>
                     <li>
                       <span class="title">5、電子零件類：</span>

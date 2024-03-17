@@ -183,7 +183,7 @@ onMounted(() => {
       <div id="banner_title">
         <h2 class="an fd">專業認證</h2>
         <h3 class="an fd">
-          <span><router-link class="color" to="/">大豐環保</router-link></span>
+          <span><router-link class="color" to="/">首頁</router-link></span>
           / 關於大豐
         </h3>
       </div>
@@ -211,7 +211,7 @@ onMounted(() => {
             <div class="item" @click="scrollToElement('cl0')">
               <h3>
                 ISO認證
-                <span> ISO certification </span>
+                <span> ISO Certification </span>
               </h3>
               <div class="pic">
                 <img
@@ -223,7 +223,7 @@ onMounted(() => {
             <div class="item" @click="scrollToElement('cl1')">
               <h3>
                 專業清運認證​
-                <span> Clearance certification </span>
+                <span> Clearance Certification </span>
               </h3>
               <div class="pic">
                 <img
@@ -235,7 +235,7 @@ onMounted(() => {
             <div class="item" @click="scrollToElement('cl2')">
               <h3>
                 溯源認證​
-                <span> Traceability certification </span>
+                <span> Traceability Certification </span>
               </h3>
               <div class="pic">
                 <img

@@ -89,9 +89,9 @@ async function fetchData() {
 
     milestonesMain.forEach((data, i) => {
       data.images = JSON.parse(data.images).other[0];
-      if (i <= 3) {
+      // if (i <= 3) {
         data.open = true;
-      }
+      // }
     });
 
     data.value = milestonesMain;
@@ -123,7 +123,7 @@ onMounted(() => {
       <div id="banner_title">
         <h2 class="an fd">重要記事</h2>
         <h3 class="an fd">
-          <span><router-link class="color" to="/">大豐環保</router-link></span>
+          <span><router-link class="color" to="/">首頁</router-link></span>
           / 關於大豐
         </h3>
       </div>

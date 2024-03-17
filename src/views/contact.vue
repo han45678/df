@@ -183,7 +183,7 @@ onMounted(() => {
         <h2 class="an fd">聯絡我們</h2>
         <h3 class="an fd">
           <span>
-            <router-link class="color" to="/">大豐環保</router-link>
+            <router-link class="color" to="/">首頁</router-link>
           </span>
           / 關於大豐
         </h3>

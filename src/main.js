@@ -13,13 +13,13 @@ console.log(cottonCursor);
 
 // Function to handle scroll and image loading logic
 function handleScroll() {
-    let wh = $(window).height();
+    let wh = $(this).height();
     let ws = $(window).scrollTop();
     let m = wh / 2 + ws;
 
     // Add 'an_go' class to elements in view
     $(".an").each(function () {
-        if ($(this).offset().top < m - $(this).height() / 2 + 400) {
+        if ($(this).offset().top < m - ($(this).height() / 4) + ($(window).height() / 2)) {
             $(this).addClass("an_go");
         } else {
             $(this).removeClass("an_go");

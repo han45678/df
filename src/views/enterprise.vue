@@ -8,10 +8,10 @@ import "slick-carousel/slick/slick.js";
 
 const banner_text = ref([
     {
-        text: "<h3>以企業願景<br>實現減碳行動</h3><p>Corporate vision achieving<br/>Carbon reduction</p>",
+        text: "<h3>以企業願景<br>實現減碳行動</h3><p>Corporate Vision Achieving<br/>Carbon Reduction</p>",
     },
     {
-        text: "<h3>以企業願景<br>實現減碳行動</h3><p>Corporate vision achieving<br/>Carbon reduction</p>",
+        text: "<h3>以企業願景<br>實現減碳行動</h3><p>Corporate Vision Achieving<br/>Carbon Reduction</p>",
     },
 ]);
 
@@ -33,8 +33,8 @@ function slick() {
         infinite: true,
         fade: true,
         arrows: false,
-        autoplaySpeed: 10000,
-        speed: 1000, // 切換動畫速度（毫秒）
+        autoplaySpeed: 5000,
+        // speed: 1000, // 切換動畫速度（毫秒）
         autoplay: true,
         asNavFor: "#banner_text .text_content",
     });
@@ -51,8 +51,8 @@ function slick() {
         infinite: true,
         fade: true,
         arrows: false,
-        autoplaySpeed: 10000,
-        speed: 1000, // 切換動畫速度（毫秒）
+        autoplaySpeed: 5000,
+        // speed: 1000, // 切換動畫速度（毫秒）
         autoplay: true,
         asNavFor: "#banner_pic",
     });
@@ -97,7 +97,7 @@ onMounted(() => {
                 <h2 class="an fd">企業清運服務</h2>
                 <h3 class="an fd">
                     <span>
-                        <router-link class="color" to="/">大豐環保</router-link>
+                        <router-link class="color" to="/">首頁</router-link>
                     </span>
                     / 企業服務
                 </h3>
@@ -107,18 +107,21 @@ onMounted(() => {
                     <div class="text an fr">
                         <h3>落實CSR、接軌ESG</h3>
                         <p>
-                            大豐環保致力於前衛理念與軟實力顛覆台灣環保產業，整合全台北中南多家合法合作廠商，以企業為中心提供最專業的企業回收服務。
+                            大豐環保致力於前衛理念與軟實力顛覆台灣環保產業，整合全台北中南多家合法合作廠商，以企業為中心提供最專業的企業回收服務。 
                         </p>
                         <p>
-                            全球因應氣候變遷、低碳轉型，各國積極研擬方案，致力達成2050年達到淨零碳排的目標。循環經濟ESG為大豐環保主要打造的供應鏈，回收與收回處理創造再生品的資源。積極落實CSR、接軌ESG，推動循環經濟，務實創造永續的價值。
+                            全球因應氣候變遷、低碳轉型，各國積極研擬方案，致力於2050年達到淨零碳排的目標，然而循環經濟ESG為大豐環保主要打造的供應鏈，經由回收與再生處理，創造更多循環的資源。積極落實CSR、接軌ESG，推動循環經濟，務實創造永續的價值。
                         </p>
                     </div>
                     <div class="video an fu">
                         <div class="video_content">
-                            <iframe src="https://www.youtube-nocookie.com/embed/cTnzgvlcK4k?si=myhZAsiNerJcFRgD"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
+                            <iframe 
+                                src="https://www.youtube.com/embed/qhze9T7Y3cU?si=-Z25Zx8XUdM1PPME" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
                         </div>
                     </div>
                 </div>
@@ -131,7 +134,7 @@ onMounted(() => {
                         <p>全循環回收再利用服務模式，提供您專屬的環保服務團隊</p>
                     </div>
                     <div id="serve_item_content">
-                        <a class="item item1" href="javascript:void(0)">
+                        <router-link class="item item1" to="/scrap">
                             <div class="text">
                                 <h5>報廢服務<span>Scrap Disposal</span></h5>
                                 <p>IC / 食品 / 海關 / 保品非保</p>
@@ -140,7 +143,8 @@ onMounted(() => {
                                 <img loading="lazy" src="@/assets/images/company_serve/enterprise/serve_item_pic01.jpg"
                                     alt="pic" />
                             </div>
-                        </a>
+                        </router-link>
+                    
                         <a class="item item2" href="javascript:void(0)">
                             <div class="text">
                                 <h5>廢棄物棄置案<span>Waste Disposal Projects</span></h5>
@@ -161,7 +165,7 @@ onMounted(() => {
                                     alt="pic" />
                             </div>
                         </a>
-                        <a class="item item4" href="javascript:void(0)">
+                        <router-link class="item item4" to="/industrialwaste">
                             <div class="text">
                                 <h5>事業廢棄物<span>Corporation Waste Disposal</span></h5>
                                 <p>統包 / 駐廠 / 儲區規劃</p>
@@ -170,8 +174,8 @@ onMounted(() => {
                                 <img loading="lazy" src="@/assets/images/company_serve/enterprise/serve_item_pic04.jpg"
                                     alt="pic" />
                             </div>
-                        </a>
-                        <a class="item item5" href="javascript:void(0)">
+                        </router-link>
+                        <router-link class="item item5" to="/docdestroy">
                             <div class="text">
                                 <h5>資安銷毀<span>Document Destruction</span></h5>
                                 <p>機密文件 / 硬碟銷毀</p>
@@ -180,8 +184,8 @@ onMounted(() => {
                                 <img loading="lazy" src="@/assets/images/company_serve/enterprise/serve_item_pic05.jpg"
                                     alt="pic" />
                             </div>
-                        </a>
-                        <a class="item item6" href="javascript:void(0)">
+                        </router-link>
+                        <router-link class="item item6" to="./wood">
                             <div class="text">
                                 <h5>廢木材清運<span>Wood Waste Disposal</span></h5>
                                 <p>木棧板 / 木箱 / 裝潢板</p>
@@ -190,7 +194,7 @@ onMounted(() => {
                                 <img loading="lazy" src="@/assets/images/company_serve/enterprise/serve_item_pic06.jpg"
                                     alt="pic" />
                             </div>
-                        </a>
+                        </router-link>
                         <a class="item item7" href="javascript:void(0)">
                             <div class="text">
                                 <h5>生活垃圾清運<span>Household Waste</span></h5>
@@ -245,7 +249,7 @@ onMounted(() => {
                                 :data-src="require(`@/assets/images/icon/enterprise_3.svg`)" />
                         </div>
                         <div class="text">
-                            <h4 class="color_main">專屬車機系統</h4>
+                            <h4>專屬車機系統</h4>
                             <p>
                                 <span>提供即時監控影像</span>
                                 <span>GPS清運路徑軌跡</span>

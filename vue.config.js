@@ -4,7 +4,7 @@ module.exports = {
   // transpileDependencies: true,
   assetsDir: "assets",
   lintOnSave: false,
-  publicPath: "/",
+  publicPath: "/demo/df_vue",
   outputDir: "demo/df_vue",
   // configureWebpack: {
   //   plugins: [

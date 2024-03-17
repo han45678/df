@@ -137,6 +137,7 @@ router.beforeEach((to, from, next) => {
     });
   })
 
+  document.documentElement.scrollTop = 0;
   document.querySelector("#transitions").classList.remove("active");
 
   setTimeout(()=>{

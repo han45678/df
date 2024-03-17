@@ -196,7 +196,7 @@ function cost() {
           } else {
             currentNumber += step;
           }
-        }, 50);
+        }, 100);
       }
     });
   });
@@ -275,7 +275,7 @@ onBeforeUnmount(() => {
         <h2 class="an fd">資安銷毀</h2>
         <h3 class="an fd">
           <span>
-            <router-link to="/">企業服務</router-link>
+            <router-link class="color" to="/">首頁</router-link>
           </span>
           / 
           <span>

@@ -8,10 +8,10 @@ import "slick-carousel/slick/slick.js";
 
 const banner_text = ref([
   {
-    text: "<h3>沒有廢棄物<br>只有錯置資源</h3><p>No Waste, only misplaced resources.</p>",
+    text: "<h3>沒有廢棄物<br>只有錯置資源</h3><p>No Waste, Only Misplaced Resources.</p>",
   },
   {
-    text: "<h3>沒有廢棄物<br>只有錯置資源</h3><p>No Waste, only misplaced resources.</p>",
+    text: "<h3>沒有廢棄物<br>只有錯置資源</h3><p>No Waste, Only Misplaced Resources.</p>",
   },
 ]);
 
@@ -33,7 +33,8 @@ function slick() {
     infinite: true,
     fade: true,
     arrows: false,
-    speed: 1000, // 切換動畫速度（毫秒）
+    autoplaySpeed: 5000,
+    // speed: 1000, // 切換動畫速度（毫秒）
     autoplay: true,
     asNavFor: "#banner_text .text_content",
   });
@@ -50,7 +51,8 @@ function slick() {
     infinite: true,
     fade: true,
     arrows: false,
-    speed: 1000, // 切換動畫速度（毫秒）
+    autoplaySpeed: 5000,
+    // speed: 1000, // 切換動畫速度（毫秒）
     // autoplay: true,
     asNavFor: "#banner_pic",
   });
@@ -109,7 +111,7 @@ onMounted(() => {
       <div id="banner_title">
         <h2 class="an fd">公司文化</h2>
         <h3 class="an fd">
-          <span><router-link class="color" to="/">大豐環保</router-link></span>
+          <span><router-link class="color" to="/">首頁</router-link></span>
           / 關於大豐
         </h3>
       </div>

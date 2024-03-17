@@ -82,7 +82,7 @@ onMounted(() => {
         <h2 class="an fd">廢⽊材清運</h2>
         <h3 class="an fd">
           <span>
-            <router-link to="/">企業服務</router-link>
+            <router-link class="color" to="/">首頁</router-link>
           </span>
           / 企業清運服務
         </h3>
